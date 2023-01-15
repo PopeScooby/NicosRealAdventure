@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Fonts/Antique Quest St.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Textures/Interface/Menu_Select_White.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/IMMORTAL.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/Menu_NewGame.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Interface/Keyboard.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.247059, 0.0941176, 0.0196078, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 38
+outline_size = 1
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Menu_NewGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -775.0
+margin_bottom = -485.0
+script = ExtResource( 4 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 505.0
+margin_bottom = 235.0
+theme = SubResource( 2 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="NewNameLbl" type="Label" parent="."]
+margin_top = 17.0
+margin_right = 505.0
+margin_bottom = 79.0
+custom_colors/font_color = Color( 0.921569, 0.909804, 0.760784, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Enter Your Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewNameTxt" type="LineEdit" parent="."]
+margin_left = 36.0
+margin_top = 89.0
+margin_right = 474.0
+margin_bottom = 152.0
+custom_colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+align = 1
+context_menu_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGameBtn" type="Button" parent="."]
+margin_left = 100.113
+margin_top = 165.52
+margin_right = 403.113
+margin_bottom = 219.52
+custom_colors/font_color = Color( 0.298039, 0.784314, 0.192157, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Start Game"
+flat = true
+
+[node name="Keyboard" parent="." instance=ExtResource( 5 )]
+margin_left = -133.0
+margin_top = 271.0
+margin_right = -90.0
+margin_bottom = 317.0
+rect_scale = Vector2( 1.25, 1.25 )
+
+[node name="Selector" type="TextureRect" parent="."]
+margin_left = -133.75
+margin_top = 271.75
+margin_right = -77.5
+margin_bottom = 328.0
+texture = ExtResource( 2 )
+expand = true

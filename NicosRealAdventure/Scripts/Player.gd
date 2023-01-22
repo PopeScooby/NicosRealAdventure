@@ -2,6 +2,14 @@ extends KinematicBody2D
 
 const UP = Vector2(0,-1)
 
+#State Descripitons
+
+#Spawn_Player: 
+#Player_Spawning: 
+#Move_Normal:
+#Dying:
+#InWater:
+
 var STATES = ["Spawn_Player","Player_Spawning","Move_Normal"]
 
 var motion = Vector2(0,0)

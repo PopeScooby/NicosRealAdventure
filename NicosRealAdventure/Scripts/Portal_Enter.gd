@@ -18,9 +18,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("Portal_Idle")
 	elif anim_name == "Portal_Close":
 		self.visible = false
-		if GlobalDictionaries.game["Level_Current"] == 1 and Global.Player["Scenes"]["Level_01_Enter"]["Seen"] == false:
-			Global.Player["Scenes"]["Scene_Curr"]["SceneName"] = "Level_01_Enter"
-			Global.STATE_GLOBAL = "Play_Scene"
-		elif GlobalDictionaries.game["Level_Current"] == 2 and Global.Player["Scenes"]["Level_02_Enter_01"]["Seen"] == false:
-			Global.Player["Scenes"]["Scene_Curr"]["SceneName"] = "Level_02_Enter_01"
-			Global.STATE_GLOBAL = "Play_Scene"
+#		if GlobalDictionaries.game["Level_Current"] == 1 and Global.Player["Scenes"]["Level_01_Enter"]["Seen"] == false:
+#			Global.Player["Scenes"]["Scene_Curr"]["SceneName"] = "Level_01_Enter"
+#			Global.STATE_GLOBAL = "Play_Scene"
+#		elif GlobalDictionaries.game["Level_Current"] == 2 and Global.Player["Scenes"]["Level_02_Enter_01"]["Seen"] == false:
+#			Global.Player["Scenes"]["Scene_Curr"]["SceneName"] = "Level_02_Enter_01"
+#			Global.STATE_GLOBAL = "Play_Scene"

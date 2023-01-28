@@ -4,6 +4,7 @@ var selector_curr = 1
 var selector_locations = {1:532, 2:592, 3:652}
 
 func _ready():
+	Global.is_debug = false
 	get_node("Menu_NewGame").visible = false
 
 func _physics_process(delta):

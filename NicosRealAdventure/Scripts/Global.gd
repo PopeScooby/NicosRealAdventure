@@ -1,6 +1,6 @@
 extends Node
 
-#var isDebug = false
+var is_debug = true
 
 var Player
 var Level

@@ -2,15 +2,20 @@ extends KinematicBody2D
 
 const UP = Vector2(0,-1)
 
-#State Descripitons
+# ------ State Descripitons ------
 
-#Spawn_Player: 
-#Player_Spawning: 
-#Move_Normal:
+#Spawn_Player: Switches STATE_LEVEL and STATE_PLAYER to "Player_Spawning"; triggers Spawn animation
+#
+#Player_Spawning: doesn't trigger anything allowing Player's Spawn animation to finish
+#
+#Move_Normal: Triggered when Spawn animation completes; 
+#
+#Player_DeSpawning: doesn't trigger anything allowing Player's "Exit" animation to complete 
+#
 #Dying:
+#
 #InWater:
-
-#var STATES = ["Spawn_Player","Player_Spawning","Move_Normal"]
+#
 
 var motion = Vector2(0,0)
 
@@ -33,14 +38,15 @@ func check_state():
 #		Global.STATE_PLAYER = "Dying"
 #	elif Global.STATE_PLAYER == "InWater":
 #		Global.STATE_PLAYER = "Dying"
-#	elif Global.STATE_LEVEL == "Spawn_Player":
-#		Global.STATE_PLAYER = "Spawn_Player"
+#	el
+	if Global.STATE_LEVEL == "Spawn_Player":
+		Global.STATE_PLAYER = "Spawn_Player"
 
 
 func exec_state():
 	pass
-#	if Global.STATE_PLAYER == "Spawn_Player":
-#		exec_state_spawn_player()
+	if Global.STATE_PLAYER == "Spawn_Player":
+		exec_state_spawn_player()
 #	elif Global.STATE_PLAYER == "Start_Scene":
 #		exec_state_start_scene()
 #	elif Global.STATE_PLAYER == "Complete_Scene":
@@ -59,8 +65,7 @@ func exec_state():
 #	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
 #		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
 #		exec_state_damage()
-#	el
-	if Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == false:
+	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == false:
 		exec_state_move()
 #	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
 #		exec_state_move_vines()
@@ -80,8 +85,9 @@ func exec_state_move():
 
 #	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
 #		exec_state_open_chest()
-#	elif Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_Exit"] == true:
-#		exec_state_despawn_player()
+#	el
+	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_Exit"] == true:
+		exec_state_despawn_player()
 #	elif Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_Hospital"] == true:
 #		exec_state_go_to_hospital()
 #	elif Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_MushRoom"] == true:
@@ -92,8 +98,7 @@ func exec_state_move():
 #		exec_state_switch_item()
 #	elif GlobalDictionaries.current_data["Flags"]["Can_Push"] == true:
 #		exec_state_push()
-#	el
-	if Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("move_right"):
 		exec_state_move_right()
 	elif Input.is_action_pressed("move_left"):
 		exec_state_move_left()
@@ -113,7 +118,7 @@ func exec_state_move():
 		if GlobalDictionaries.current_data["Game_Info"]["Friction"] == true:
 			motion.x = lerp(motion.x, 0, 0.4)
 
-#	set_animation()
+	set_animation()
 
 	motion = move_and_slide(motion, UP)
 
@@ -165,17 +170,17 @@ func exec_state_move_jump():
 	if is_on_floor():
 		motion.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
 
-#func exec_state_spawn_player():
-#	Global.STATE_LEVEL = "Player_Spawning"
-#	Global.STATE_PLAYER = "Player_Spawning"
-#	Global.Player["Animation"] = "Spawn"
-#	self.set_animation()
-#
-#func exec_state_despawn_player():
-#	Global.STATE_LEVEL = "Player_DeSpawning"
-#	Global.STATE_PLAYER = "Player_DeSpawning"
-#	Global.Player["Animation"] = "Exit"
-#
+func exec_state_spawn_player():
+	Global.STATE_LEVEL = "Player_Spawning"
+	Global.STATE_PLAYER = "Player_Spawning"
+	Global.Player["Animation"] = "Spawn"
+	self.set_animation()
+
+func exec_state_despawn_player():
+	Global.STATE_LEVEL = "Player_DeSpawning"
+	Global.STATE_PLAYER = "Player_DeSpawning"
+	Global.Player["Animation"] = "Exit"
+
 #func exec_state_open_chest():
 #
 #	GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] = false
@@ -405,7 +410,7 @@ func set_player():
 		GlobalDictionaries.game["PlayerKey"] = "1"
 		GlobalDictionaries.game["Level_Current"] = int(get_parent().name.replace("Level_",""))
 		Global.Player["Level_Max"] = int(get_parent().name.replace("Level_",""))
-		Global.STATE_PLAYER = "Move_Normal"
+#		Global.STATE_PLAYER = "Move_Normal"
 	else:
 		Global.Player = GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])]
 		
@@ -420,34 +425,34 @@ func set_player():
 #		Global.Player["Level_Max"] = int(get_parent().name.replace("Level_",""))
 
 
-#func set_animation():
-#
-#	if Global.Player["Animation"] == "VinesIdle":
-#		$AnimationPlayer.playback_speed = 0
-#	else:
-#		$AnimationPlayer.playback_speed = 1
-#		var anim_name = Global.Player["Name_Explorer"] + "_" + str(GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"]) + "_" + Global.Player["Animation"]
-#		var curr_anim = $AnimationPlayer.current_animation
-#
-#		if curr_anim != anim_name:
-#			$AnimationPlayer.play(anim_name)
+func set_animation():
+
+	if Global.Player["Animation"] == "VinesIdle":
+		$AnimationPlayer.playback_speed = 0
+	else:
+		$AnimationPlayer.playback_speed = 1
+		var anim_name = Global.Player["Name_Explorer"] + "_" + str(GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"]) + "_" + Global.Player["Animation"]
+		var curr_anim = $AnimationPlayer.current_animation
+
+		if curr_anim != anim_name:
+			$AnimationPlayer.play(anim_name)
 
 #	if Global.Player["Animation"] != "Crouch" and Global.Player["Animation2"] == "Camera_Crouch":
 #		Global.Player["Animation2"] = "Camera_Stand"
-#
+
 #	var anim_name = Global.Player["Animation2"]
 #	var anim_curr = $AnimationPlayer2.current_animation
 #	if anim_curr != anim_name:
 #		$AnimationPlayer2.play(anim_name)
 
-#func _on_AnimationPlayer_animation_finished(anim_name):
-#
-#	if anim_name.find("Spawn") != -1:
-#		$AnimationPlayer.play(Global.Player["Name_Explorer"] + "_1_Idle")
-#		Global.STATE_LEVEL = "Despawn_Portal"
-#		Global.STATE_PLAYER = "Move_Normal"
-#	elif anim_name.find("_Exit") != -1:
-#		Global.STATE_LEVEL = "Despawn_Portal_Exit"
+func _on_AnimationPlayer_animation_finished(anim_name):
+
+	if anim_name.find("Spawn") != -1:
+		$AnimationPlayer.play(Global.Player["Name_Explorer"] + "_1_Idle")
+		Global.STATE_LEVEL = "Despawn_Portal"
+		Global.STATE_PLAYER = "Move_Normal"
+	elif anim_name.find("_Exit") != -1:
+		Global.STATE_LEVEL = "Despawn_Portal_Exit"
 #	elif anim_name.find("_Interact") != -1:
 #		Global.STATE_PLAYER = "Move_Normal"
 #	elif anim_name.find("_Die") != -1:

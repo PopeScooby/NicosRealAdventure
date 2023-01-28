@@ -9,7 +9,10 @@ func _process(delta):
 		Global.STATE_LEVEL = "Portal_Spawning"
 	elif Global.STATE_LEVEL == "Despawn_Portal":
 		$AnimationPlayer.play("Portal_Close")
-		Global.STATE_LEVEL = "Spawn_Portal_Exit"
+		if get_parent().has_node("Portal_Exit"):
+			Global.STATE_LEVEL = "Spawn_Portal_Exit"
+		else:
+			Global.STATE_LEVEL = "Gameplay"
 		
 func _on_AnimationPlayer_animation_finished(anim_name):
 	

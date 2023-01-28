@@ -9,8 +9,9 @@ func _process(delta):
 	exec_state()
 	
 func check_state():
-	if self.visible and  GlobalDictionaries.current_data["Level_Timer"] <= 0:
-		Global.STATE_LEVEL = "Timeout"
+	pass
+#	if self.visible and  GlobalDictionaries.current_data["Level_Timer"] <= 0:
+#		Global.STATE_LEVEL = "Timeout"
 		
 func exec_state():
 
@@ -20,10 +21,10 @@ func exec_state():
 	elif Global.STATE_LEVEL == "Despawn_Portal_Exit":
 		$AnimationPlayer.play("Portal_Close")
 		Global.STATE_LEVEL = "Gameplay"
-	elif Global.STATE_LEVEL == "Timeout" and Global.STATE_GLOBAL != "GameOver":
-		$Camera2D.current = true
-		$AnimationPlayer.play("Portal_Close")
-		Global.STATE_GLOBAL = "GameOver"
+#	elif Global.STATE_LEVEL == "Timeout" and Global.STATE_GLOBAL != "GameOver":
+#		$Camera2D.current = true
+#		$AnimationPlayer.play("Portal_Close")
+#		Global.STATE_GLOBAL = "GameOver"
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -38,21 +39,21 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		else:
 			if GlobalDictionaries.game["Level_Current"] == 0:
 				get_tree().change_scene("res://Scenes/Interface/Menu_GameStart.tscn")
-			elif GlobalDictionaries.game["Level_Current"] == Global.Player["Level_Max"] and GlobalDictionaries.game["Level_Current"] != (Global.Player["Levels"].size() - 1):
-				Global.Player["Level_Max"] += 1
-			Global.Level["Complete"] = true
-	#		Global.Player["Levels"][str(Global.Player["Level_Current"])] = Global.Level
-	#		GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])] = Global.Player
-			GlobalDictionaries.save_current_data()
-			Global.save_game()
-			get_tree().change_scene("res://Scenes/Interface/Menu_LevelSelect.tscn")
+#			elif GlobalDictionaries.game["Level_Current"] == Global.Player["Level_Max"] and GlobalDictionaries.game["Level_Current"] != (Global.Player["Levels"].size() - 1):
+#				Global.Player["Level_Max"] += 1
+#				Global.Level["Complete"] = true
+#		#		Global.Player["Levels"][str(Global.Player["Level_Current"])] = Global.Level
+#		#		GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])] = Global.Player
+#				GlobalDictionaries.save_current_data()
+#				Global.save_game()
+#				get_tree().change_scene("res://Scenes/Interface/Menu_LevelSelect.tscn")
 
 func _on_Portal_body_entered(body):
-	if body.name == "Adventurer" and self.visible == true:
+	if body.name == "Player" and self.visible == true:
 		GlobalDictionaries.current_data["Flags"]["On_Exit"] = true
 
 
 func _on_Portal_body_exited(body):
-	if body.name == "Adventurer" and self.visible == true:
+	if body.name == "Player" and self.visible == true:
 		GlobalDictionaries.current_data["Flags"]["On_Exit"] = false
 #

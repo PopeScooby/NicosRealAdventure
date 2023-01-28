@@ -7,7 +7,7 @@ var Level
 
 var audio_players = {}
 
-var STATE_GLOBAL = "GameStart"
+var STATE_GLOBAL = ""
 var STATE_PLAYER = ""
 var STATE_LEVEL = ""
 

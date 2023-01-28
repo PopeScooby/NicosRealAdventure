@@ -1,20 +1,31 @@
 extends Node2D
 #
-##State Descripitons
+## ------ State Descripitons ------ 
 #
-##Spawn_Protal: 
-##Portal_Spawning: 
-##Spawn_Player:
-##Player_Spawning:
-##Despawn_Portal:
-##Gameplay:
-##Despawn_Portal_Exit:
+##Spawn_Portal: Starts Animation "Portal_Spawn" on Portal_Enter swithces STATE_LEVEL to Portal_Spawning
+#
+##Portal_Spawning: doesn't trigger anything allowing "Portal_Spawn" animation to finish
+#
+##Spawn_Player: triggered when "Portal_Spawn" animation finishes on Player.gd switches STATE_PLAYER to "Spawn_Player"
+#
+##Player_Spawning: doesn't trigger anything allowing Player's Spawn animation to finish
+#
+##Despawn_Portal: triggered when Player's Spawn animation completes. Triggers "Portal_Close" animation on Portal_Enter. 
+##	if there is a Portal_Exit it Switches STATE_LEVEL to Spawn_Portal_Exit else is switches STATE_LEVEL to Gameplay
+#
+##Spawn_Portal_Exit: triggers Portal_Spawn animation; Switches STATE_LEVEL to Gameplay
+#
+##Gameplay: State that should be active when on a level and other level things aren't happening
+#
+##Player_DeSpawning: doesn't trigger anything allowing Player's "Exit" animation to complete 
+#
+##Despawn_Portal_Exit: triggered when Player's "Exit" animation is complete. triggers "Portal_Close" animation on Portal_Exit.
+##	Switches STATE_LEVEL to Gameplay
+#
 ##Scene_Level1:
 ##Scene_Complete:
 #
-#var STATES = ["Spawn_Protal","Portal_Spawning","Spawn_Player","Player_Spawning","Despawn_Portal","Gameplay","Despawn_Portal_Exit",
-#			  "Scene_Level1","Scene_Complete"]
-#
+
 export var cam_left = 0
 export var cam_right = 0
 export var cam_top = 0
@@ -31,7 +42,8 @@ func _ready():
 	$Player/Camera2D.limit_top = cam_top
 	$Player/Camera2D.limit_bottom = cam_bottom
 	level_setup()
-#	Global.STATE_LEVEL = "Spawn_Portal"
+	if get_node("Background").has_node("Portal_Enter"):
+		Global.STATE_LEVEL = "Spawn_Portal"
 
 
 func _process(delta):

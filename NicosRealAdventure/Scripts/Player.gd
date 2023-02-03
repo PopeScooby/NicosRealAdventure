@@ -83,10 +83,9 @@ func exec_state_move():
 		motion.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"]
 
 
-#	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
-#		exec_state_open_chest()
-#	el
-	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_Exit"] == true:
+	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
+		exec_state_open_chest()
+	elif Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_Exit"] == true:
 		exec_state_despawn_player()
 #	elif Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["On_Hospital"] == true:
 #		exec_state_go_to_hospital()
@@ -96,8 +95,8 @@ func exec_state_move():
 #		exec_state_use_item()
 #	elif Input.is_action_just_pressed("action_switch_item") and GlobalDictionaries.current_data["Current_Item"] != "":
 #		exec_state_switch_item()
-#	elif GlobalDictionaries.current_data["Flags"]["Can_Push"] == true:
-#		exec_state_push()
+	elif GlobalDictionaries.current_data["Flags"]["Can_Push"] == true:
+		exec_state_push()
 	elif Input.is_action_pressed("move_right"):
 		exec_state_move_right()
 	elif Input.is_action_pressed("move_left"):
@@ -181,49 +180,49 @@ func exec_state_despawn_player():
 	Global.STATE_PLAYER = "Player_DeSpawning"
 	Global.Player["Animation"] = "Exit"
 
-#func exec_state_open_chest():
-#
-#	GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] = false
-#
-#	Global.STATE_PLAYER = "Chest_Opening"
-#	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] == 0:
-#		GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
-#
-#	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] == 1:
-#		Global.Player["Animation"] = "Interact"
-#	elif  GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] == -1:
-#		Global.Player["Animation"] = "Interact"
-#
-#func exec_state_push():
-#
-#	if Input.is_action_pressed("move_right"):
-#		exec_state_push_right()
-#	elif Input.is_action_pressed("move_left"):
-#		exec_state_push_left()
-#	else:
-#		exec_state_push_idle()
-#
-#func exec_state_push_right():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = 1
-#	motion.x = min(motion.x + GlobalDictionaries.current_data["Game_Info"]["Acceleration"], GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-#	if GlobalDictionaries.current_data["Flags"]["Crate_R"]:
-#		Global.Player["Animation"] = "Pull"
-#	else:
-#		Global.Player["Animation"] = "Push"
-#
-#func exec_state_push_left():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = -1
-#	motion.x = max(motion.x - GlobalDictionaries.current_data["Game_Info"]["Acceleration"], -GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-#	if GlobalDictionaries.current_data["Flags"]["Crate_R"]:
-#		Global.Player["Animation"] = "Push"
-#	else:
-#		Global.Player["Animation"] = "Pull"
-#
-#func exec_state_push_idle():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
-#	GlobalDictionaries.current_data["Game_Info"]["Friction"] = true
-#	Global.Player["Animation"] = "Idle"
-#
+func exec_state_open_chest():
+
+	GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] = false
+
+	Global.STATE_PLAYER = "Chest_Opening"
+	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] == 0:
+		GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
+
+	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] == 1:
+		Global.Player["Animation"] = "Interact"
+	elif  GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] == -1:
+		Global.Player["Animation"] = "Interact"
+
+func exec_state_push():
+
+	if Input.is_action_pressed("move_right"):
+		exec_state_push_right()
+	elif Input.is_action_pressed("move_left"):
+		exec_state_push_left()
+	else:
+		exec_state_push_idle()
+
+func exec_state_push_right():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = 1
+	motion.x = min(motion.x + GlobalDictionaries.current_data["Game_Info"]["Acceleration"], GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	if GlobalDictionaries.current_data["Flags"]["Crate_R"]:
+		Global.Player["Animation"] = "Pull"
+	else:
+		Global.Player["Animation"] = "Push"
+
+func exec_state_push_left():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = -1
+	motion.x = max(motion.x - GlobalDictionaries.current_data["Game_Info"]["Acceleration"], -GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	if GlobalDictionaries.current_data["Flags"]["Crate_R"]:
+		Global.Player["Animation"] = "Push"
+	else:
+		Global.Player["Animation"] = "Pull"
+
+func exec_state_push_idle():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
+	GlobalDictionaries.current_data["Game_Info"]["Friction"] = true
+	Global.Player["Animation"] = "Idle"
+
 #func exec_state_bounce():
 #	motion.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
 #	Global.STATE_PLAYER = "Move_Normal"
@@ -453,8 +452,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		Global.STATE_PLAYER = "Move_Normal"
 	elif anim_name.find("_Exit") != -1:
 		Global.STATE_LEVEL = "Despawn_Portal_Exit"
-#	elif anim_name.find("_Interact") != -1:
-#		Global.STATE_PLAYER = "Move_Normal"
+	elif anim_name.find("_Interact") != -1:
+		Global.STATE_PLAYER = "Move_Normal"
 #	elif anim_name.find("_Die") != -1:
 #		Global.STATE_PLAYER = "Dead"
 #	elif anim_name.find("Scene") != -1:

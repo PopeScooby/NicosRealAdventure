@@ -93,7 +93,7 @@ func level_setup():
 
 #	level_setup_timer()
 	level_setup_coins()
-#	level_setup_chests()
+	level_setup_chests()
 #	level_setup_gems()
 	GlobalDictionaries.load_current_data()
 #	level_setup_items()
@@ -122,27 +122,27 @@ func level_setup_coins():
 		get_node("Treasure/Coin" + str(Coin_Curr)).visible = Coins[Coin_Curr - 1]
 		Coin_Curr += 1
 
-#func level_setup_chests():
-#
-#	var level_chests_count = get_tree().get_nodes_in_group("Chests").size()
-#	var dict_chests_count = Global.Level["Chests"].size()
-#	var Chest_Curr = 1
-#
-#	if level_chests_count != dict_chests_count:
-#		Global.Level["Chests"] = []
-#		while Chest_Curr <= level_chests_count:
-#			Global.Level["Chests"].append(true)
-#			Chest_Curr += 1
-#
-#	var Chests = Global.Level["Chests"]
-#	Chest_Curr = 1
-#
-#	while Chest_Curr <= level_chests_count:
-#		if Chests[Chest_Curr - 1]:
-#			get_node("Treasure/Chest" + str(Chest_Curr)).STATE = "Closed"
-#		else:
-#			get_node("Treasure/Chest" + str(Chest_Curr)).STATE = "Opened"
-#		Chest_Curr += 1
+func level_setup_chests():
+
+	var level_chests_count = get_tree().get_nodes_in_group("Chests").size()
+	var dict_chests_count = Global.Level["Chests"].size()
+	var Chest_Curr = 1
+
+	if level_chests_count != dict_chests_count:
+		Global.Level["Chests"] = []
+		while Chest_Curr <= level_chests_count:
+			Global.Level["Chests"].append(true)
+			Chest_Curr += 1
+
+	var Chests = Global.Level["Chests"]
+	Chest_Curr = 1
+
+	while Chest_Curr <= level_chests_count:
+		if Chests[Chest_Curr - 1]:
+			get_node("Treasure/Chest" + str(Chest_Curr)).STATE = "Closed"
+		else:
+			get_node("Treasure/Chest" + str(Chest_Curr)).STATE = "Opened"
+		Chest_Curr += 1
 
 #func level_setup_gems():
 #	pass

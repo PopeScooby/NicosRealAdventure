@@ -12,12 +12,12 @@ var is_loaded = false
 
 func _ready():
 	if LEVER_STATE == "Active":
-		$Platform_5/Lever/AnimationPlayer.play("Is_Active")
+		$Platform/Lever/AnimationPlayer.play("Is_Active")
 		$AnimationPlayer.playback_speed = 1
 		$AnimationPlayer.play(Platform_Anim_Active)
 		$AnimationPlayer.seek(Platform_Anim_StartSec, true)
 	elif LEVER_STATE == "Neutral":
-		$Platform_5/Lever/AnimationPlayer.play("Is_Neutral")
+		$Platform/Lever/AnimationPlayer.play("Is_Neutral")
 		$AnimationPlayer.playback_speed = 0
 		if LEVER_STATE_prev == "Active":
 			$AnimationPlayer.play(Platform_Anim_Active)
@@ -25,7 +25,7 @@ func _ready():
 			$AnimationPlayer.play(Platform_Anim_Inactive)
 		$AnimationPlayer.seek(Platform_Anim_StartSec, true)
 	elif LEVER_STATE == "Inactive":
-		$Platform_5/Lever/AnimationPlayer.play("Not_Active")
+		$Platform/Lever/AnimationPlayer.play("Not_Active")
 		$AnimationPlayer.playback_speed = 1
 		$AnimationPlayer.play(Platform_Anim_Inactive)
 		$AnimationPlayer.seek(Platform_Anim_StartSec, true)
@@ -38,26 +38,26 @@ func _process(delta):
 		if LEVER_STATE == "Inactive" or LEVER_STATE == "Active":
 			LEVER_STATE_prev = LEVER_STATE
 			LEVER_STATE = "Neutral"
-			$Platform_5/Lever/AnimationPlayer.play("Is_Neutral")
+			$Platform/Lever/AnimationPlayer.play("Is_Neutral")
 		elif LEVER_STATE == "Neutral":
 			if LEVER_STATE_prev == "Active":
 				LEVER_STATE_prev = LEVER_STATE
 				LEVER_STATE = "Inactive"
-				$Platform_5/Lever/AnimationPlayer.play("Not_Active")
+				$Platform/Lever/AnimationPlayer.play("Not_Active")
 			elif LEVER_STATE_prev == "Inactive":
 				LEVER_STATE_prev = LEVER_STATE
 				LEVER_STATE = "Active"
-				$Platform_5/Lever/AnimationPlayer.play("Is_Active")
+				$Platform/Lever/AnimationPlayer.play("Is_Active")
 
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Adventurer" and self.visible == true:
+	if body.name == "Player" and self.visible == true:
 		GlobalDictionaries.current_data["Game_Info"]["Object_Interact"] = self.name
 		GlobalDictionaries.current_data["Flags"]["Can_PullLever"] = true
 
 func _on_Area2D_body_exited(body):
-	if body.name == "Adventurer" and self.visible == true:
+	if body.name == "Player" and self.visible == true:
 		GlobalDictionaries.current_data["Flags"]["Can_PullLever"] = false
 
 
@@ -88,10 +88,10 @@ func _on_Platform_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == Platform_Anim_Active:
 		LEVER_STATE_prev = LEVER_STATE
 		LEVER_STATE = "Neutral"
-		$Platform_5/Lever/AnimationPlayer.play("Is_Neutral")
+		$Platform/Lever/AnimationPlayer.play("Is_Neutral")
 	elif anim_name == Platform_Anim_Inactive:
 		LEVER_STATE_prev = LEVER_STATE
 		LEVER_STATE = "Neutral"
-		$Platform_5/Lever/AnimationPlayer.play("Is_Neutral")
+		$Platform/Lever/AnimationPlayer.play("Is_Neutral")
 
 

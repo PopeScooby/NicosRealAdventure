@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Textures/Items/Jumpshroom (1).png" type="Texture" id=1]
+[ext_resource path="res://Textures/Items/Jumpshroom/Jumpshroom_01.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Jumpshroom.gd" type="Script" id=2]
-[ext_resource path="res://Textures/Items/Jumpshroom (5).png" type="Texture" id=3]
-[ext_resource path="res://Textures/Items/Jumpshroom (6).png" type="Texture" id=4]
-[ext_resource path="res://Textures/Items/Jumpshroom (2).png" type="Texture" id=5]
-[ext_resource path="res://Textures/Items/Jumpshroom (3).png" type="Texture" id=6]
-[ext_resource path="res://Textures/Items/Jumpshroom (4).png" type="Texture" id=7]
+[ext_resource path="res://Textures/Items/Jumpshroom/Jumpshroom_05.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Items/Jumpshroom/Jumpshroom_06.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Items/Jumpshroom/Jumpshroom_02.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Items/Jumpshroom/Jumpshroom_03.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Items/Jumpshroom/Jumpshroom_04.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 39.0173
@@ -70,6 +70,7 @@ position = Vector2( 0, 23.838 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
 anims/Bounce = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )

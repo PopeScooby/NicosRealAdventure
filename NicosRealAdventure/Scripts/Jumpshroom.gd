@@ -16,7 +16,7 @@ func _process(delta):
 
 func _on_Jumpshroom_body_entered(body):
 	
-	if body.name == "Adventurer" and Global.Player["Animation"] == "Fall":
+	if body.name == "Player" and Global.Player["Animation"] == "Fall":
 		GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"] = self.BounceHeight
 		STATE = "Bounce"
 		Global.STATE_PLAYER = "Bounce"

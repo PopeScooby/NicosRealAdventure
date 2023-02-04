@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lever_01_01.png-28f2f21c3eaff74404b34211a2937b7f.stex"
+path="res://.import/Jumpshroom_01.png-051160955a6da05ec0d89aff95318af3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Levers/lever_01_01.png"
-dest_files=[ "res://.import/lever_01_01.png-28f2f21c3eaff74404b34211a2937b7f.stex" ]
+source_file="res://Textures/Items/Jumpshroom/Jumpshroom_01.png"
+dest_files=[ "res://.import/Jumpshroom_01.png-051160955a6da05ec0d89aff95318af3.stex" ]
 
 [params]
 

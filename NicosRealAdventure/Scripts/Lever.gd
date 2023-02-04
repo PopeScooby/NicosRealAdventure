@@ -36,12 +36,12 @@ func _process(delta):
 			$AnimationPlayer.play("Deactivate")
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Adventurer" and self.visible == true:
+	if body.name == "Player" and self.visible == true:
 		GlobalDictionaries.current_data["Game_Info"]["Object_Interact"] = self.name
 		GlobalDictionaries.current_data["Flags"]["Can_PullLever"] = true
 
 func _on_Area2D_body_exited(body):
-	if body.name == "Adventurer" and self.visible == true:
+	if body.name == "Player" and self.visible == true:
 		GlobalDictionaries.current_data["Flags"]["Can_PullLever"] = false
 
 #		var mover = get_node(mover_path + "/AnimationPlayer")

@@ -53,8 +53,8 @@ func exec_state():
 #		exec_state_complete_scene()
 #	elif Global.STATE_PLAYER == "Dying":
 #		exec_state_dying()
-#	elif Global.STATE_PLAYER == "Bounce":
-#		exec_state_bounce()
+	elif Global.STATE_PLAYER == "Bounce":
+		exec_state_bounce()
 #	elif Global.STATE_PLAYER == "ExitHospital":
 #		exec_state_exit_hospital()
 #	elif Global.STATE_PLAYER == "ExitMushRoom":
@@ -223,10 +223,10 @@ func exec_state_push_idle():
 	GlobalDictionaries.current_data["Game_Info"]["Friction"] = true
 	Global.Player["Animation"] = "Idle"
 
-#func exec_state_bounce():
-#	motion.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
-#	Global.STATE_PLAYER = "Move_Normal"
-#
+func exec_state_bounce():
+	motion.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
+	Global.STATE_PLAYER = "Move_Normal"
+
 #func exec_state_dying():
 #	motion.x = 0
 #	Global.Player["Animation"] = "Die"

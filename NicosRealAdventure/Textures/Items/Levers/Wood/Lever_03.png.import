@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lever_03_01.png-b0b3793728f63accca0506d3d5ded8b1.stex"
+path="res://.import/Lever_03.png-b82e7bd2b841141611fb242c313beb9a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Levers/lever_03_01.png"
-dest_files=[ "res://.import/lever_03_01.png-b0b3793728f63accca0506d3d5ded8b1.stex" ]
+source_file="res://Textures/Items/Levers/Wood/Lever_03.png"
+dest_files=[ "res://.import/Lever_03.png-b82e7bd2b841141611fb242c313beb9a.stex" ]
 
 [params]
 

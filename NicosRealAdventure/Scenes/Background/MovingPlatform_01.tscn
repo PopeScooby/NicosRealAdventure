@@ -1,0 +1,244 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scenes/Items/Jumpshroom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Mover.gd" type="Script" id=2]
+[ext_resource path="res://Textures/Tilesets/Jungle/Jungle_Green_02.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Tilesets/Jungle/Jungle_Green_08.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Tilesets/Jungle/Jungle_Green_01.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Tilesets/Jungle/Jungle_Green_07.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Slide_Left_256"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -256, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Static"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Un_Slide_Left_256"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -256, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Up_Down_1000"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -500 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Up_Down_1200"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -600 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Up_Down_50"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -100 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Up_Down_600"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -300 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Platform_1" type="Node2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="Platform_1" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Platform_1"]
+position = Vector2( 64, 19.5 )
+polygon = PoolVector2Array( -64, -18.5, 256, -19.5, 256, 84, -30, 84, -64, 50.5 )
+
+[node name="A1" type="TextureRect" parent="Platform_1"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="A2" type="TextureRect" parent="Platform_1"]
+margin_top = 64.0
+margin_right = 64.0
+margin_bottom = 128.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="B1" type="TextureRect" parent="Platform_1"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+expand = true
+flip_h = true
+
+[node name="B2" type="TextureRect" parent="Platform_1"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+expand = true
+flip_h = true
+
+[node name="C1" type="TextureRect" parent="Platform_1"]
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+expand = true
+flip_h = true
+
+[node name="C2" type="TextureRect" parent="Platform_1"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+expand = true
+flip_h = true
+
+[node name="D1" type="TextureRect" parent="Platform_1"]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+expand = true
+flip_h = true
+
+[node name="D2" type="TextureRect" parent="Platform_1"]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="E1" type="TextureRect" parent="Platform_1"]
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+texture = ExtResource( 3 )
+expand = true
+flip_h = true
+
+[node name="E2" type="TextureRect" parent="Platform_1"]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Jumpshroom" parent="Platform_1" instance=ExtResource( 1 )]
+position = Vector2( 48.5, -62 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Platform_1")
+anims/RESET = SubResource( 2 )
+anims/Slide_Left_256 = SubResource( 8 )
+anims/Static = SubResource( 5 )
+anims/Un_Slide_Left_256 = SubResource( 9 )
+anims/Up_Down_1000 = SubResource( 6 )
+anims/Up_Down_1200 = SubResource( 4 )
+anims/Up_Down_50 = SubResource( 3 )
+anims/Up_Down_600 = SubResource( 7 )

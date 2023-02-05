@@ -25,10 +25,18 @@ func _ready():
 	set_player()
 
 func _process(delta):
-
-#	var anim_curr = $AnimationPlayer.current_animation
-#	var anim_speed = $AnimationPlayer.playback_speed
-
+	
+	if Input.is_action_pressed("camera_right"):
+		$Camera2D.position += Vector2(15, 0)
+	if Input.is_action_pressed("camera_left"):
+		$Camera2D.position += Vector2(-15, 0)
+	if Input.is_action_pressed("camera_up"):
+		$Camera2D.position += Vector2(0, -15)
+	if Input.is_action_pressed("camera_down"):
+		$Camera2D.position += Vector2(0, 15)
+	if Input.is_action_pressed("camera_center"):
+		$Camera2D.position = Vector2(0, 0)
+		
 	check_state()
 	exec_state()
 
@@ -42,17 +50,7 @@ func check_state():
 
 
 func exec_state():
-	
-	if Input.is_action_pressed("camera_right"):
-		$Camera2D.position += Vector2(10, 0)
-	elif Input.is_action_pressed("camera_left"):
-		$Camera2D.position += Vector2(-10, 0)
-	elif Input.is_action_pressed("camera_up"):
-		$Camera2D.position += Vector2(0, -10)
-	elif Input.is_action_pressed("camera_down"):
-		$Camera2D.position += Vector2(0, 10)
-	elif Input.is_action_pressed("camera_center"):
-		$Camera2D.position = Vector2(0, 0)
+
 		
 	if Global.STATE_PLAYER == "Spawn_Player":
 		exec_state_spawn_player()

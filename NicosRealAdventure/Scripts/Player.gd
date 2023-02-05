@@ -36,8 +36,8 @@ func check_state():
 	pass
 	if GlobalDictionaries.current_data["Hearts_Current"] <= 0 and Global.STATE_PLAYER != "Dead":
 		Global.STATE_PLAYER = "Dying"
-#	elif Global.STATE_PLAYER == "InWater":
-#		Global.STATE_PLAYER = "Dying"
+	elif Global.STATE_PLAYER == "InWater":
+		Global.STATE_PLAYER = "Dying"
 	elif Global.STATE_LEVEL == "Spawn_Player":
 		Global.STATE_PLAYER = "Spawn_Player"
 

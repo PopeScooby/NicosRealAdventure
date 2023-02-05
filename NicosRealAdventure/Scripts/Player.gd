@@ -66,8 +66,8 @@ func exec_state():
 		exec_state_damage()
 	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == false:
 		exec_state_move()
-#	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
-#		exec_state_move_vines()
+	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
+		exec_state_move_vines()
 
 func exec_state_move():
 
@@ -75,7 +75,7 @@ func exec_state_move():
 		GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"]
 
 	GlobalDictionaries.current_data["Game_Info"]["Friction"] = false
-#
+
 	if GlobalDictionaries.current_data["Flags"]["On_Crate"] == true and is_on_floor():
 		motion.y = 1
 	else:
@@ -231,89 +231,89 @@ func exec_state_dying():
 	Global.Player["Animation"] = "Die"
 	set_animation()
 
-#func exec_state_move_vines():
+func exec_state_move_vines():
+
+	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] != 0:
+		GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"]
+
+	GlobalDictionaries.current_data["Game_Info"]["Friction"] = false
+
+	if Input.is_action_pressed("move_right"):
+		exec_state_move_right_vines()
+	elif Input.is_action_pressed("move_left"):
+		exec_state_move_left_vines()
+	elif Input.is_action_pressed("move_up"):
+		exec_state_move_up_vines()
+	elif Input.is_action_pressed("move_down"):
+		exec_state_move_down_vines()
+	else:
+		exec_state_idle_vines()
 #
-#	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] != 0:
-#		GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"]
-#
-#	GlobalDictionaries.current_data["Game_Info"]["Friction"] = false
-#
-#	if Input.is_action_pressed("move_right"):
-#		exec_state_move_right_vines()
-#	elif Input.is_action_pressed("move_left"):
-#		exec_state_move_left_vines()
-#	elif Input.is_action_pressed("move_up"):
-#		exec_state_move_up_vines()
-#	elif Input.is_action_pressed("move_down"):
-#		exec_state_move_down_vines()
-#	else:
-#		exec_state_idle_vines()
-##
-##	if Input.is_action_just_pressed("move_jump"):
-##		exec_state_move_jump_vines()
-#
-#	set_animation()
-#
-#	motion = move_and_slide(motion, UP)
-#
-#func exec_state_move_right_vines():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = 1
-#	motion.x = min(motion.x + GlobalDictionaries.current_data["Game_Info"]["Acceleration"], GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Run"
-#	else:
-#		if motion.y < 0:
-#			Global.Player["Animation"] = "Vines"
-#		else:
-#			Global.Player["Animation"] = "Vines"
-#
-#func exec_state_move_left_vines():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = -1
-#	motion.x = max(motion.x - GlobalDictionaries.current_data["Game_Info"]["Acceleration"], -GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Run"
-#	else:
-#		if motion.y < 0:
-#			Global.Player["Animation"] = "Vines"
-#		else:
-#			Global.Player["Animation"] = "Vines"
-#
-#func exec_state_move_up_vines():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
-#	motion.y = max(motion.x - GlobalDictionaries.current_data["Game_Info"]["Acceleration"] * 1.5, -GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Run"
-#	else:
-#		if motion.y < 0:
-#			Global.Player["Animation"] = "Vines"
-#		else:
-#			Global.Player["Animation"] = "Vines"
-#
-#func exec_state_move_down_vines():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
-#	motion.y = min(motion.x + GlobalDictionaries.current_data["Game_Info"]["Acceleration"] * 3, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Idle"
-#	else:
-#		if motion.y < 0:
-#			Global.Player["Animation"] = "Vines"
-#		else:
-#			Global.Player["Animation"] = "Vines"
-#
+#	if Input.is_action_just_pressed("move_jump"):
+#		exec_state_move_jump_vines()
+
+	set_animation()
+
+	motion = move_and_slide(motion, UP)
+
+func exec_state_move_right_vines():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = 1
+	motion.x = min(motion.x + GlobalDictionaries.current_data["Game_Info"]["Acceleration"], GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	if is_on_floor():
+		Global.Player["Animation"] = "Run"
+	else:
+		if motion.y < 0:
+			Global.Player["Animation"] = "Vines"
+		else:
+			Global.Player["Animation"] = "Vines"
+
+func exec_state_move_left_vines():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = -1
+	motion.x = max(motion.x - GlobalDictionaries.current_data["Game_Info"]["Acceleration"], -GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	if is_on_floor():
+		Global.Player["Animation"] = "Run"
+	else:
+		if motion.y < 0:
+			Global.Player["Animation"] = "Vines"
+		else:
+			Global.Player["Animation"] = "Vines"
+
+func exec_state_move_up_vines():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
+	motion.y = max(motion.x - GlobalDictionaries.current_data["Game_Info"]["Acceleration"] * 1.5, -GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	if is_on_floor():
+		Global.Player["Animation"] = "Run"
+	else:
+		if motion.y < 0:
+			Global.Player["Animation"] = "Vines"
+		else:
+			Global.Player["Animation"] = "Vines"
+
+func exec_state_move_down_vines():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
+	motion.y = min(motion.x + GlobalDictionaries.current_data["Game_Info"]["Acceleration"] * 3, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	if is_on_floor():
+		Global.Player["Animation"] = "Idle"
+	else:
+		if motion.y < 0:
+			Global.Player["Animation"] = "Vines"
+		else:
+			Global.Player["Animation"] = "Vines"
+
 #func exec_state_move_jump_vines():
 #	motion.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"] * 15
 #
-#func exec_state_idle_vines():
-#	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
-#	motion.y = 0
-#	motion.x = 0
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Idle"
-#	else:
-#		if motion.y < 0:
-#			Global.Player["Animation"] = "VinesIdle"
-#		else:
-#			Global.Player["Animation"] = "VinesIdle"
+func exec_state_idle_vines():
+	GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] = GlobalDictionaries.current_data["Game_Info"]["Dir_Prev"]
+	motion.y = 0
+	motion.x = 0
+	if is_on_floor():
+		Global.Player["Animation"] = "Idle"
+	else:
+		if motion.y < 0:
+			Global.Player["Animation"] = "VinesIdle"
+		else:
+			Global.Player["Animation"] = "VinesIdle"
 
 func exec_state_damage():
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heart_Empty.png-8dca28a4fb551c0e3e06191217bf8295.stex"
+path="res://.import/Water_02.png-ddb19c77fa471f562dc60a8ab61512b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Heart/Heart_Empty.png"
-dest_files=[ "res://.import/Heart_Empty.png-8dca28a4fb551c0e3e06191217bf8295.stex" ]
+source_file="res://Textures/Tilesets/Fantasy/Water/Water_02.png"
+dest_files=[ "res://.import/Water_02.png-ddb19c77fa471f562dc60a8ab61512b2.stex" ]
 
 [params]
 

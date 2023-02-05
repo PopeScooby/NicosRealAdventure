@@ -34,12 +34,11 @@ func _process(delta):
 
 func check_state():
 	pass
-#	if GlobalDictionaries.current_data["Hearts_Current"] <= 0 and Global.STATE_PLAYER != "Dead":
-#		Global.STATE_PLAYER = "Dying"
+	if GlobalDictionaries.current_data["Hearts_Current"] <= 0 and Global.STATE_PLAYER != "Dead":
+		Global.STATE_PLAYER = "Dying"
 #	elif Global.STATE_PLAYER == "InWater":
 #		Global.STATE_PLAYER = "Dying"
-#	el
-	if Global.STATE_LEVEL == "Spawn_Player":
+	elif Global.STATE_LEVEL == "Spawn_Player":
 		Global.STATE_PLAYER = "Spawn_Player"
 
 
@@ -51,8 +50,8 @@ func exec_state():
 #		exec_state_start_scene()
 #	elif Global.STATE_PLAYER == "Complete_Scene":
 #		exec_state_complete_scene()
-#	elif Global.STATE_PLAYER == "Dying":
-#		exec_state_dying()
+	elif Global.STATE_PLAYER == "Dying":
+		exec_state_dying()
 	elif Global.STATE_PLAYER == "Bounce":
 		exec_state_bounce()
 #	elif Global.STATE_PLAYER == "ExitHospital":
@@ -62,9 +61,9 @@ func exec_state():
 #	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Enemy"] == true:
 #		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = false
 #		exec_state_damage()
-#	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
-#		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
-#		exec_state_damage()
+	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
+		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
+		exec_state_damage()
 	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == false:
 		exec_state_move()
 #	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
@@ -227,11 +226,11 @@ func exec_state_bounce():
 	motion.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
 	Global.STATE_PLAYER = "Move_Normal"
 
-#func exec_state_dying():
-#	motion.x = 0
-#	Global.Player["Animation"] = "Die"
-#	set_animation()
-#
+func exec_state_dying():
+	motion.x = 0
+	Global.Player["Animation"] = "Die"
+	set_animation()
+
 #func exec_state_move_vines():
 #
 #	if GlobalDictionaries.current_data["Game_Info"]["Dir_Curr"] != 0:
@@ -315,15 +314,15 @@ func exec_state_bounce():
 #			Global.Player["Animation"] = "VinesIdle"
 #		else:
 #			Global.Player["Animation"] = "VinesIdle"
-#
-#func exec_state_damage():
-#
-#	if GlobalDictionaries.current_data["Hearts_Current"] > 0:
-#		GlobalDictionaries.current_data["Hearts_Current"] -= 1
-#		$AnimationPlayer2.play("Damage")
-#	else:
-#		Global.STATE_PLAYER = "Dying"
-#
+
+func exec_state_damage():
+
+	if GlobalDictionaries.current_data["Hearts_Current"] > 0:
+		GlobalDictionaries.current_data["Hearts_Current"] -= 1
+		$AnimationPlayer2.play("Damage")
+	else:
+		Global.STATE_PLAYER = "Dying"
+
 #func exec_state_start_scene():
 #	$AnimationPlayer.playback_speed = 0
 #	if Global.Player["Scenes"][Global.Player["Scenes"]["Scene_Curr"]["SceneName"]]["Parent"] == "Adventurer":
@@ -454,8 +453,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		Global.STATE_LEVEL = "Despawn_Portal_Exit"
 	elif anim_name.find("_Interact") != -1:
 		Global.STATE_PLAYER = "Move_Normal"
-#	elif anim_name.find("_Die") != -1:
-#		Global.STATE_PLAYER = "Dead"
+	elif anim_name.find("_Die") != -1:
+		Global.STATE_PLAYER = "Dead"
 #	elif anim_name.find("Scene") != -1:
 #		Global.Player["Scenes"][Global.Player["Scenes"]["Scene_Curr"]["SceneName"]]["Seen"] = true
 #		Global.STATE_GLOBAL = "Continue_Scene"

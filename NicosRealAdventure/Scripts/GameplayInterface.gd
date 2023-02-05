@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-#var heart = load("res://Textures/Items/Heart.png")
-#var heart_container = load("res://Textures/Items/Heart_Empty.png")
-#
+var heart = load("res://Textures/Interface/Heart/Heart.png")
+var heart_container = load("res://Textures/Interface/Heart/Heart_Empty.png")
+
 #var selector_curr = 1
 #var selector_locations = {1:270, 2:330, 3:400}
 #
@@ -16,9 +16,9 @@ extends CanvasLayer
 #
 func _process(delta):
 
-#	if Global.STATE_PLAYER == "Dead":
+	if Global.STATE_PLAYER == "Dead":
 #		$PauseScreen/PauseLbl.text = "You are Dead!"
-#		exec_state_pause()
+		exec_state_pause()
 #	elif Global.STATE_PLAYER == "Timeout":
 #		$PauseScreen/PauseLbl.text = "Out Of Time!"
 #		exec_state_pause()
@@ -48,40 +48,40 @@ func _process(delta):
 #
 #
 	$Coin/Coin_Count_Label.text = str(GlobalDictionaries.current_data["Coins_Current"])
-#
-#	if GlobalDictionaries.current_data["Hearts_Total"] < 5:
-#		$Hearts/Heart5.visible = false
-#	else:
-#		$Hearts/Heart5.visible = true
-#	if GlobalDictionaries.current_data["Hearts_Total"] < 4:
-#		$Hearts/Heart4.visible = false
-#	else:
-#		$Hearts/Heart4.visible = true
-#	if GlobalDictionaries.current_data["Hearts_Total"] < 3:
-#		$Hearts/Heart3.visible = false
-#	else:
-#		$Hearts/Heart3.visible = true
-#	if GlobalDictionaries.current_data["Hearts_Total"] < 2:
-#		$Hearts/Heart2.visible = false
-#	else:
-#		$Hearts/Heart2.visible = true
-#	if GlobalDictionaries.current_data["Hearts_Total"] < 1:
-#		$Hearts/Heart1.visible = false
-#	else:
-#		$Hearts/Heart1.visible = true
-##
-#	for x in 6:
-#		if x != 0:
-#			var HeartNode = get_node("Hearts/Heart" + str(x))
-#
-#			if GlobalDictionaries.current_data["Hearts_Total"] < x:
-#				HeartNode.visible = false
-#
-#			if GlobalDictionaries.current_data["Hearts_Current"] < x:
-#				HeartNode.texture = heart_container
-#			else:
-#				HeartNode.texture = heart
-#
+
+	if GlobalDictionaries.current_data["Hearts_Total"] < 5:
+		$Hearts/Heart5.visible = false
+	else:
+		$Hearts/Heart5.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 4:
+		$Hearts/Heart4.visible = false
+	else:
+		$Hearts/Heart4.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 3:
+		$Hearts/Heart3.visible = false
+	else:
+		$Hearts/Heart3.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 2:
+		$Hearts/Heart2.visible = false
+	else:
+		$Hearts/Heart2.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 1:
+		$Hearts/Heart1.visible = false
+	else:
+		$Hearts/Heart1.visible = true
+
+	for x in 6:
+		if x != 0:
+			var HeartNode = get_node("Hearts/Heart" + str(x))
+
+			if GlobalDictionaries.current_data["Hearts_Total"] < x:
+				HeartNode.visible = false
+
+			if GlobalDictionaries.current_data["Hearts_Current"] < x:
+				HeartNode.texture = heart_container
+			else:
+				HeartNode.texture = heart
+
 #	var item_texture = "res://Textures/Interface/Item_" + GlobalDictionaries.current_data["Current_Item"] + ".png"
 #	var item_image = load(item_texture)
 #	$Items/ItemWindow/ItemImg.texture = item_image
@@ -93,12 +93,12 @@ func _process(delta):
 #		$Items/ItemWindow/ItemImg/Item_Count_Label.text = str(GlobalDictionaries.current_data["Inventory"][GlobalDictionaries.current_data["Current_Item"]])
 #		$Items/ItemWindow/ItemImg/Item_x_Label.visible = true
 #
-#
-#func exec_state_pause():
-#	get_tree().paused = true
+
+func exec_state_pause():
+	get_tree().paused = true
 #	$Timer/LevelTimeTimer.stop()
 #	$PauseScreen.visible = true
-#
+
 #func exec_state_unpause():
 #	get_tree().paused = false
 #	$Timer/LevelTimeTimer.start()

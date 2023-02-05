@@ -33,7 +33,6 @@ func _process(delta):
 	exec_state()
 
 func check_state():
-	pass
 	if GlobalDictionaries.current_data["Hearts_Current"] <= 0 and Global.STATE_PLAYER != "Dead":
 		Global.STATE_PLAYER = "Dying"
 	elif Global.STATE_PLAYER == "InWater":
@@ -43,7 +42,18 @@ func check_state():
 
 
 func exec_state():
-	pass
+	
+	if Input.is_action_pressed("camera_right"):
+		$Camera2D.position += Vector2(10, 0)
+	elif Input.is_action_pressed("camera_left"):
+		$Camera2D.position += Vector2(-10, 0)
+	elif Input.is_action_pressed("camera_up"):
+		$Camera2D.position += Vector2(0, -10)
+	elif Input.is_action_pressed("camera_down"):
+		$Camera2D.position += Vector2(0, 10)
+	elif Input.is_action_pressed("camera_center"):
+		$Camera2D.position = Vector2(0, 0)
+		
 	if Global.STATE_PLAYER == "Spawn_Player":
 		exec_state_spawn_player()
 #	elif Global.STATE_PLAYER == "Start_Scene":

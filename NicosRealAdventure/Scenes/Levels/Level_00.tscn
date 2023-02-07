@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Tilesets/Fantasy/Forest/Forest_01.png" type="Texture" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://Scenes/Triggers/Trigger_Vine.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Scenes/Triggers/Trigger_SetPosition.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Textures/Background/Backdrops/Forest.png" type="Texture" id=34]
+[ext_resource path="res://Scenes/Characters/Enemy_Slug.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Scenes/Characters/Enemy_Spider.tscn" type="PackedScene" id=36]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -347,6 +349,12 @@ points = PoolVector2Array( 128, 64, 0, 64, 0, 0, 128, 0 )
 14/shapes = [  ]
 14/z_index = 0
 
+[sub_resource type="Curve2D" id=13]
+bake_interval = 100.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 267, -676, 0, 0, 0, 0, 678, -676, 0, 0, 0, 0, 676, -444, 0, 0, 0, 0, 1512, -444, 0, 0, 0, 0, 676, -442, 0, 0, 0, 0, 677, -677, 0, 0, 0, 0, 267, -676 )
+}
+
 [sub_resource type="TileSet" id=12]
 0/name = "Forest_00.png 0"
 0/texture = ExtResource( 8 )
@@ -584,6 +592,19 @@ deactivate_texture = ExtResource( 18 )
 position = Vector2( -254, -65 )
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy_Slug1" parent="Enemies" instance=ExtResource( 35 )]
+position = Vector2( 2083, -1449 )
+
+[node name="Enemy_Spider1" parent="Enemies" instance=ExtResource( 36 )]
+position = Vector2( 209, -708 )
+patrol_path = NodePath("../Paths/Path2D")
+
+[node name="Paths" type="Node2D" parent="Enemies"]
+
+[node name="Path2D" type="Path2D" parent="Enemies/Paths"]
+position = Vector2( -59, -32 )
+curve = SubResource( 13 )
 
 [node name="TileMap_Foreground" type="TileMap" parent="."]
 tile_set = SubResource( 12 )

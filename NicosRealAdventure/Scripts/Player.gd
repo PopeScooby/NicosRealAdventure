@@ -66,9 +66,9 @@ func exec_state():
 #		exec_state_exit_hospital()
 #	elif Global.STATE_PLAYER == "ExitMushRoom":
 #		exec_state_exit_mush_room()
-#	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Enemy"] == true:
-#		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = false
-#		exec_state_damage()
+	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Enemy"] == true:
+		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = false
+		exec_state_damage()
 	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
 		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
 		exec_state_damage()

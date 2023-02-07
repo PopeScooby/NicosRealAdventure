@@ -1,6 +1,16 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=63 format=2]
 
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_02.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_03.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_05.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_04.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_06.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_07.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_08.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_09.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_01.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Characters/Nico/Run/Run_00.png" type="Texture" id=11]
 [ext_resource path="res://Textures/Misc/Speech Bubbles/Panel_01.png" type="Texture" id=32]
 [ext_resource path="res://Textures/Misc/Speech Bubbles/Connector_01.png" type="Texture" id=33]
 [ext_resource path="res://Fonts/IMMORTAL.ttf" type="DynamicFontData" id=34]
@@ -1319,7 +1329,7 @@ tracks/6/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=77]
 resource_name = "Nico_-1_Run"
 loop = true
 tracks/0/type = "value"
@@ -1332,7 +1342,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ) ]
+"values": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:flip_h")
@@ -2905,7 +2915,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ) ]
+"values": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:flip_h")
@@ -4374,7 +4384,7 @@ anims/Nico_-1_PlaceHandle = SubResource( 70 )
 anims/Nico_-1_PlaceJumpshroom = SubResource( 72 )
 anims/Nico_-1_Pull = SubResource( 73 )
 anims/Nico_-1_Push = SubResource( 74 )
-anims/Nico_-1_Run = SubResource( 5 )
+anims/Nico_-1_Run = SubResource( 77 )
 anims/Nico_-1_Spawn = SubResource( 75 )
 anims/Nico_-1_Vines = SubResource( 76 )
 anims/Nico_1_Crouch = SubResource( 37 )

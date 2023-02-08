@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Item_Jumpshroom.png-2c4e3bcff156cd8708a9e2ec5c1c348c.stex"
+path="res://.import/Key_Backspace.png-3cd8c934be7dcdd3ece9f52a7203f6c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Interface/Item_Jumpshroom.png"
-dest_files=[ "res://.import/Item_Jumpshroom.png-2c4e3bcff156cd8708a9e2ec5c1c348c.stex" ]
+source_file="res://Textures/Interface/Menu/Key_Backspace.png"
+dest_files=[ "res://.import/Key_Backspace.png-3cd8c934be7dcdd3ece9f52a7203f6c5.stex" ]
 
 [params]
 

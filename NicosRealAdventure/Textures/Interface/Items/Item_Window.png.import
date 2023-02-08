@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ItemWindow_Crop.png-55e7dba2bce06f2e14b3ee3b09657769.stex"
+path="res://.import/Item_Window.png-bcad42b79ad616ebe0068cfc40cb5035.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Interface/ItemWindow_Crop.png"
-dest_files=[ "res://.import/ItemWindow_Crop.png-55e7dba2bce06f2e14b3ee3b09657769.stex" ]
+source_file="res://Textures/Interface/Items/Item_Window.png"
+dest_files=[ "res://.import/Item_Window.png-bcad42b79ad616ebe0068cfc40cb5035.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Key_Space.png-cdfa198568e919cdcda0f0ed941d9621.stex"
+path="res://.import/Background_GameStart_Splash.jpg-d6378ca19bf398adb7f2fc5a368b9e36.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Interface/Key_Space.png"
-dest_files=[ "res://.import/Key_Space.png-cdfa198568e919cdcda0f0ed941d9621.stex" ]
+source_file="res://Textures/Interface/Menu/Background_GameStart_Splash.jpg"
+dest_files=[ "res://.import/Background_GameStart_Splash.jpg-d6378ca19bf398adb7f2fc5a368b9e36.stex" ]
 
 [params]
 

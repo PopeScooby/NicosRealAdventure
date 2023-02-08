@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Menu_Select_White.png-0a444293a0cc1e36a217f3427201fb20.stex"
+path="res://.import/Item_Jumpshroom.png-f6a2f37e858952cdcc1f2e020191e59c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Interface/Menu_Select_White.png"
-dest_files=[ "res://.import/Menu_Select_White.png-0a444293a0cc1e36a217f3427201fb20.stex" ]
+source_file="res://Textures/Interface/Items/Item_Jumpshroom.png"
+dest_files=[ "res://.import/Item_Jumpshroom.png-f6a2f37e858952cdcc1f2e020191e59c.stex" ]
 
 [params]
 

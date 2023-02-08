@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Key_Backspace.png-291acda5adab64ef133afd2661198b54.stex"
+path="res://.import/Key_Space.png-fc9dd477b41b804e343a56f1d6cc6eee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Interface/Key_Backspace.png"
-dest_files=[ "res://.import/Key_Backspace.png-291acda5adab64ef133afd2661198b54.stex" ]
+source_file="res://Textures/Interface/Menu/Key_Space.png"
+dest_files=[ "res://.import/Key_Space.png-fc9dd477b41b804e343a56f1d6cc6eee.stex" ]
 
 [params]
 

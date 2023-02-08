@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GameStart_Splash.jpg-73556ecbc2b97cb04243950e7147a4d9.stex"
+path="res://.import/Item_Window_Wide.png-1a4296e3c5dc466c3cf2d50b45a2cbfc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Interface/GameStart_Splash.jpg"
-dest_files=[ "res://.import/GameStart_Splash.jpg-73556ecbc2b97cb04243950e7147a4d9.stex" ]
+source_file="res://Textures/Interface/Items/Item_Window_Wide.png"
+dest_files=[ "res://.import/Item_Window_Wide.png-1a4296e3c5dc466c3cf2d50b45a2cbfc.stex" ]
 
 [params]
 

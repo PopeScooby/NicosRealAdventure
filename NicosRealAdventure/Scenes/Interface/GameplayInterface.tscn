@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/GameplayInterface.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/IMMORTAL.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Textures/Items/Coins/Skull/Skull_Rotating_01.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Interface/Heart/Heart.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Interface/Items/Item_Window.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Interface/Items/Item_Jumpshroom.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Interface/Items/Item_Empty.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Interface/Items/Item_Handle.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -13,6 +17,18 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 45
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 35
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -86,3 +102,152 @@ margin_right = 502.0
 margin_bottom = 286.0
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
+
+[node name="Items" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Item_Window" type="TextureRect" parent="Items"]
+margin_left = 5.0
+margin_top = 620.0
+margin_right = 101.0
+margin_bottom = 716.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Item_Image" type="TextureRect" parent="Items/Item_Window"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 84.0
+margin_bottom = 85.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Item_x_Label" type="Label" parent="Items/Item_Window/Item_Image"]
+visible = false
+margin_left = 47.0
+margin_top = 52.0
+margin_right = 61.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "x"
+
+[node name="Item_Count_Label" type="Label" parent="Items/Item_Window/Item_Image"]
+visible = false
+margin_left = 58.0
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="Item_Select" type="Control" parent="Items"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Item_Select_Top" type="TextureRect" parent="Items/Item_Select"]
+margin_left = 592.0
+margin_top = 200.0
+margin_right = 688.0
+margin_bottom = 296.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Top"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 84.0
+margin_bottom = 85.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Item_x_Label" type="Label" parent="Items/Item_Select/Item_Select_Top/Item_Image"]
+margin_left = 47.0
+margin_top = 52.0
+margin_right = 61.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "x"
+
+[node name="Item_Count_Label" type="Label" parent="Items/Item_Select/Item_Select_Top/Item_Image"]
+margin_left = 58.0
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="Item_Select_Right" type="TextureRect" parent="Items/Item_Select"]
+margin_left = 704.0
+margin_top = 312.0
+margin_right = 800.0
+margin_bottom = 408.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Right"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 84.0
+margin_bottom = 85.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="Item_x_Label" type="Label" parent="Items/Item_Select/Item_Select_Right/Item_Image"]
+margin_left = 47.0
+margin_top = 52.0
+margin_right = 61.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "x"
+
+[node name="Item_Count_Label" type="Label" parent="Items/Item_Select/Item_Select_Right/Item_Image"]
+margin_left = 58.0
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="Item_Select_Middle" type="TextureRect" parent="Items/Item_Select"]
+margin_left = 592.0
+margin_top = 312.0
+margin_right = 688.0
+margin_bottom = 408.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Middle"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 84.0
+margin_bottom = 85.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Item_x_Label" type="Label" parent="Items/Item_Select/Item_Select_Middle/Item_Image"]
+visible = false
+margin_left = 47.0
+margin_top = 52.0
+margin_right = 61.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "x"
+
+[node name="Item_Count_Label" type="Label" parent="Items/Item_Select/Item_Select_Middle/Item_Image"]
+visible = false
+margin_left = 58.0
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/GameplayInterface.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/IMMORTAL.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Textures/Interface/Items/Item_Jumpshroom.png" type="Texture" id=6]
 [ext_resource path="res://Textures/Interface/Items/Item_Empty.png" type="Texture" id=7]
 [ext_resource path="res://Textures/Interface/Items/Item_Handle.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Interface/Items/Item_Window_Unselected.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -33,7 +34,12 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 2 )
+
 [node name="GameplayInterface" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Coin" type="Control" parent="."]
@@ -144,7 +150,6 @@ custom_fonts/font = SubResource( 4 )
 text = "0"
 
 [node name="Item_Select" type="Control" parent="Items"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -153,7 +158,7 @@ margin_left = 592.0
 margin_top = 200.0
 margin_right = 688.0
 margin_bottom = 296.0
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Top"]
@@ -187,7 +192,7 @@ margin_left = 704.0
 margin_top = 312.0
 margin_right = 800.0
 margin_bottom = 408.0
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Right"]
@@ -251,3 +256,94 @@ margin_bottom = 90.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "0"
+
+[node name="Item_Select_Left" type="TextureRect" parent="Items/Item_Select"]
+margin_left = 480.0
+margin_top = 312.0
+margin_right = 576.0
+margin_bottom = 408.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Left"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 84.0
+margin_bottom = 85.0
+expand = true
+
+[node name="Item_x_Label" type="Label" parent="Items/Item_Select/Item_Select_Left/Item_Image"]
+visible = false
+margin_left = 47.0
+margin_top = 52.0
+margin_right = 61.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "x"
+
+[node name="Item_Count_Label" type="Label" parent="Items/Item_Select/Item_Select_Left/Item_Image"]
+visible = false
+margin_left = 58.0
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="Item_Select_Bottom" type="TextureRect" parent="Items/Item_Select"]
+margin_left = 592.0
+margin_top = 424.0
+margin_right = 688.0
+margin_bottom = 520.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Item_Image" type="TextureRect" parent="Items/Item_Select/Item_Select_Bottom"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 84.0
+margin_bottom = 85.0
+expand = true
+
+[node name="Item_x_Label" type="Label" parent="Items/Item_Select/Item_Select_Bottom/Item_Image"]
+visible = false
+margin_left = 47.0
+margin_top = 52.0
+margin_right = 61.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "x"
+
+[node name="Item_Count_Label" type="Label" parent="Items/Item_Select/Item_Select_Bottom/Item_Image"]
+visible = false
+margin_left = 58.0
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="PauseScreen" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PauseMenu" type="ColorRect" parent="PauseScreen"]
+margin_left = 422.5
+margin_top = 181.0
+margin_right = 877.5
+margin_bottom = 474.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="PauseLabel" type="Label" parent="PauseScreen/PauseMenu"]
+margin_top = 20.0
+margin_right = 455.0
+margin_bottom = 82.0
+custom_colors/font_color = Color( 1, 0.905882, 0.662745, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "~ Pause ~"
+align = 1

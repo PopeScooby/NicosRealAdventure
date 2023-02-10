@@ -5,10 +5,10 @@ var heart_container = load("res://Textures/Interface/Heart/Heart_Empty.png")
 
 #var selector_curr = 1
 #var selector_locations = {1:270, 2:330, 3:400}
-#
-#func _ready():
-#	$PauseScreen.visible = false
-#
+
+func _ready():
+	$PauseScreen.visible = false
+
 #func _on_LevelTimeTimer_timeout():
 #	if GlobalDictionaries.current_data["Level_Timer"] > 0:
 #		$Timer/LevelTimeTimer.start()
@@ -34,53 +34,22 @@ func _process(delta):
 #		exec_state_start_scene()
 #	elif Global.STATE_PLAYER == "Complete_Scene":
 #		exec_state_complete_scene()
-#	else:
-#		$PauseScreen/PauseLbl.text = "~Pause~"
+	else:
+		$PauseScreen/PauseMenu/PauseLabel.text = "~Pause~"
 #
 #	$Timer/LevelTimeLbl.text = str(GlobalDictionaries.current_data["Level_Timer"])
 #
-#	if Input.is_action_just_pressed("pause") and get_tree().paused == true and Global.STATE_PLAYER != "Dead":
-#		exec_state_unpause()
-#	elif Input.is_action_just_pressed("pause") and get_tree().paused == false and Global.STATE_PLAYER != "Dead":
-#		exec_state_pause()
-#	elif $PauseScreen.visible == true:
-#		exec_state_menu()
-#
-#
-	$Coin/Coin_Count_Label.text = str(GlobalDictionaries.current_data["Coins_Current"])
-
-	if GlobalDictionaries.current_data["Hearts_Total"] < 5:
-		$Hearts/Heart5.visible = false
-	else:
-		$Hearts/Heart5.visible = true
-	if GlobalDictionaries.current_data["Hearts_Total"] < 4:
-		$Hearts/Heart4.visible = false
-	else:
-		$Hearts/Heart4.visible = true
-	if GlobalDictionaries.current_data["Hearts_Total"] < 3:
-		$Hearts/Heart3.visible = false
-	else:
-		$Hearts/Heart3.visible = true
-	if GlobalDictionaries.current_data["Hearts_Total"] < 2:
-		$Hearts/Heart2.visible = false
-	else:
-		$Hearts/Heart2.visible = true
-	if GlobalDictionaries.current_data["Hearts_Total"] < 1:
-		$Hearts/Heart1.visible = false
-	else:
-		$Hearts/Heart1.visible = true
-
-	for x in 6:
-		if x != 0:
-			var HeartNode = get_node("Hearts/Heart" + str(x))
-
-			if GlobalDictionaries.current_data["Hearts_Total"] < x:
-				HeartNode.visible = false
-
-			if GlobalDictionaries.current_data["Hearts_Current"] < x:
-				HeartNode.texture = heart_container
-			else:
-				HeartNode.texture = heart
+	if Input.is_action_just_pressed("game_pause") and get_tree().paused == true and Global.STATE_PLAYER != "Dead":
+		exec_state_unpause()
+	elif Input.is_action_just_pressed("game_pause") and get_tree().paused == false and Global.STATE_PLAYER != "Dead":
+		exec_state_pause()
+	elif $PauseScreen.visible == true:
+		exec_state_menu()
+	elif Input.is_action_just_pressed("item_select"):
+		exec_state_item_select()
+		
+	self.set_interface_coins()
+	self.set_interface_hearts()
 
 #	var item_texture = "res://Textures/Interface/Item_" + GlobalDictionaries.current_data["Current_Item"] + ".png"
 #	var item_image = load(item_texture)
@@ -94,17 +63,26 @@ func _process(delta):
 #		$Items/ItemWindow/ItemImg/Item_x_Label.visible = true
 #
 
+func exec_state_item_select():
+	if $Items/Item_Select.visible:
+		$Items/Item_Select.visible = false
+		$Items/Item_Window.visible = true
+	else:
+		$Items/Item_Select.visible = true
+		$Items/Item_Window.visible = false
+
 func exec_state_pause():
 	get_tree().paused = true
 #	$Timer/LevelTimeTimer.stop()
-#	$PauseScreen.visible = true
+	$PauseScreen.visible = true
 
-#func exec_state_unpause():
-#	get_tree().paused = false
+func exec_state_unpause():
+	get_tree().paused = false
 #	$Timer/LevelTimeTimer.start()
-#	$PauseScreen.visible = false
-#
-#func exec_state_menu():
+	$PauseScreen.visible = false
+
+func exec_state_menu():
+	pass
 #	if Input.is_action_just_pressed("menu_down") and selector_curr != 0:
 #		if selector_curr != 3:
 #			selector_curr += 1
@@ -182,7 +160,44 @@ func exec_state_pause():
 #	$PauseScreen/Selector.rect_position.y = selector_locations[selector_curr]
 #
 #
-#
+func set_interface_coins():
+	$Coin/Coin_Count_Label.text = str(GlobalDictionaries.current_data["Coins_Current"])
+
+func set_interface_hearts():
+	
+	if GlobalDictionaries.current_data["Hearts_Total"] < 5:
+		$Hearts/Heart5.visible = false
+	else:
+		$Hearts/Heart5.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 4:
+		$Hearts/Heart4.visible = false
+	else:
+		$Hearts/Heart4.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 3:
+		$Hearts/Heart3.visible = false
+	else:
+		$Hearts/Heart3.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 2:
+		$Hearts/Heart2.visible = false
+	else:
+		$Hearts/Heart2.visible = true
+	if GlobalDictionaries.current_data["Hearts_Total"] < 1:
+		$Hearts/Heart1.visible = false
+	else:
+		$Hearts/Heart1.visible = true
+
+	for x in 6:
+		if x != 0:
+			var HeartNode = get_node("Hearts/Heart" + str(x))
+
+			if GlobalDictionaries.current_data["Hearts_Total"] < x:
+				HeartNode.visible = false
+
+			if GlobalDictionaries.current_data["Hearts_Current"] < x:
+				HeartNode.texture = heart_container
+			else:
+				HeartNode.texture = heart
+
 #
 #
 #func _on_AnimationPlayer_animation_finished(anim_name):

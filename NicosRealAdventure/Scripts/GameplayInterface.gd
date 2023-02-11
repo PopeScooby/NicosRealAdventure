@@ -8,6 +8,8 @@ var heart_container = load("res://Textures/Interface/Heart/Heart_Empty.png")
 
 func _ready():
 	$PauseScreen.visible = false
+	$Items/Item_Select.visible = false
+	$Items/Item_Window.visible = false
 
 #func _on_LevelTimeTimer_timeout():
 #	if GlobalDictionaries.current_data["Level_Timer"] > 0:

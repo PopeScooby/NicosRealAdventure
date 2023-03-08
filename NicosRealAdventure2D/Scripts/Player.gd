@@ -43,16 +43,49 @@ func set_player():
 
 func exec_state_move(delta):
 
-#	if not is_on_floor():
-#		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
+	if not is_on_floor():
+		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
 	
-	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
+	if Input.get_axis("move_left", "move_right"):
+		exec_state_move_horizontal(Input.get_axis("move_left", "move_right"))
+	
 	else:
-		velocity.x = move_toward(velocity.x, 0, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+		exec_state_move_idle()
+	
+	
+	if is_on_floor():
+		if Input.is_action_just_pressed("move_jump"):
+			exec_state_move_jump()
 	
 	move_and_slide()
+
+func exec_state_move_horizontal(direction):
+	velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
+	
+	if is_on_floor():
+		Global.Player["Animation"] = "Run"
+	else:
+		if velocity.y < 0:
+			Global.Player["Animation"] = "Jump"
+		else:
+			Global.Player["Animation"] = "Fall"
+
+func exec_state_move_idle():
+	velocity.x = move_toward(velocity.x, 0, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
+	
+	if is_on_floor():
+		Global.Player["Animation"] = "Idle"
+	else:
+		if velocity.y < 0 and GlobalDictionaries.current_data["Flags"]["Can_Climb"] == false:
+			Global.Player["Animation"] = "Jump"
+		else:
+			if  GlobalDictionaries.current_data["Flags"]["On_Elevator"] == false:
+				Global.Player["Animation"] = "Fall"
+			else:
+				Global.Player["Animation"] = "Idle"
+
+func exec_state_move_jump():
+	velocity.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0

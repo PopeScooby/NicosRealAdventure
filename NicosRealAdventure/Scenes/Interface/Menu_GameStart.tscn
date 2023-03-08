@@ -48,9 +48,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Nico's Real Adventure"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Selector" parent="." instance=ExtResource( 1 )]
 

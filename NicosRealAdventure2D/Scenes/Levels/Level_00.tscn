@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://hd3k3fv3am7r"]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_y8txq"]
+[ext_resource type="PackedScene" uid="uid://bq6vdxko1pocd" path="res://Scenes/Characters/Nico.tscn" id="2_fceyn"]
+
+[sub_resource type="TileSet" id="TileSet_nub58"]
+
+[node name="Level_00" type="Node2D"]
+script = ExtResource("1_y8txq")
+
+[node name="Backdrop" type="Node2D" parent="."]
+
+[node name="TileMap_Background" type="TileMap" parent="."]
+format = 2
+
+[node name="Levers" type="Node2D" parent="."]
+
+[node name="Movers_Back" type="Node2D" parent="."]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TileMap_Platforms" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_nub58")
+format = 2
+
+[node name="Movers_Front" type="Node2D" parent="."]
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="Treasure" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_fceyn")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="TileMap_Foreground" type="TileMap" parent="."]
+format = 2
+
+[node name="Foreground" type="Node2D" parent="."]

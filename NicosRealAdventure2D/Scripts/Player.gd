@@ -45,6 +45,18 @@ func exec_state_move(delta):
 
 	if not is_on_floor():
 		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
+		
+		if velocity.y < 0:
+			Global.Player["Animation"] = "Jump"
+		else:
+			Global.Player["Animation"] = "Fall"
+		
+	else:
+		if velocity.x == 0:
+			Global.Player["Animation"] = "Idle"
+		else:
+			Global.Player["Animation"] = "Run"
+		
 	
 	if Input.get_axis("move_left", "move_right"):
 		exec_state_move_horizontal(Input.get_axis("move_left", "move_right"))
@@ -57,35 +69,61 @@ func exec_state_move(delta):
 		if Input.is_action_just_pressed("move_jump"):
 			exec_state_move_jump()
 	
+	set_animation()
+
 	move_and_slide()
 
 func exec_state_move_horizontal(direction):
 	velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
 	
-	if is_on_floor():
-		Global.Player["Animation"] = "Run"
+	if velocity.x < 0:
+		$Sprite2D.flip_h = true
 	else:
-		if velocity.y < 0:
-			Global.Player["Animation"] = "Jump"
-		else:
-			Global.Player["Animation"] = "Fall"
+		$Sprite2D.flip_h = false
+	
+#	if is_on_floor():
+#		Global.Player["Animation"] = "Run"
+#	else:
+#		if velocity.y < 0:
+#			Global.Player["Animation"] = "Jump"
+#		else:
+#			Global.Player["Animation"] = "Fall"
 
 func exec_state_move_idle():
 	velocity.x = move_toward(velocity.x, 0, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
 	
-	if is_on_floor():
-		Global.Player["Animation"] = "Idle"
-	else:
-		if velocity.y < 0 and GlobalDictionaries.current_data["Flags"]["Can_Climb"] == false:
-			Global.Player["Animation"] = "Jump"
-		else:
-			if  GlobalDictionaries.current_data["Flags"]["On_Elevator"] == false:
-				Global.Player["Animation"] = "Fall"
-			else:
-				Global.Player["Animation"] = "Idle"
+#	if is_on_floor():
+#		Global.Player["Animation"] = "Idle"
+#	else:
+#		if velocity.y < 0 and GlobalDictionaries.current_data["Flags"]["Can_Climb"] == false:
+#			Global.Player["Animation"] = "Jump"
+#		else:
+#			if  GlobalDictionaries.current_data["Flags"]["On_Elevator"] == false:
+#				Global.Player["Animation"] = "Fall"
+#			else:
+#				Global.Player["Animation"] = "Idle"
 
 func exec_state_move_jump():
 	velocity.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
+
+func set_animation():
+	
+	var anim_name = Global.Player["Name_Explorer"] + "_" + Global.Player["Animation"]
+	var curr_anim = $AnimationPlayer.current_animation
+
+	if curr_anim != anim_name:
+		$AnimationPlayer.play(anim_name)
+
+
+#	if Global.Player["Animation"] == "VinesIdle":
+#		$AnimationPlayer.playback_speed = 0
+#	else:
+#		$AnimationPlayer.playback_speed = 1
+#		var anim_name = Global.Player["Name_Explorer"] + "_" + Global.Player["Animation"]
+#		var curr_anim = $AnimationPlayer.current_animation
+#
+#		if curr_anim != anim_name:
+#			$AnimationPlayer.play(anim_name)
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0

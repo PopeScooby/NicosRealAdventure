@@ -47,18 +47,10 @@ func exec_state_move(delta):
 
 	if not is_on_floor():
 		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
-		
-		if velocity.y < 0:
-			Global.Player["Animation"] = "Jump"
-		else:
-			Global.Player["Animation"] = "Fall"
+		get_animation_y()
 		
 	else:
-		if velocity.x == 0:
-			Global.Player["Animation"] = "Idle"
-		else:
-			Global.Player["Animation"] = "Run"
-		
+		get_animation_x()
 	
 	
 	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
@@ -102,6 +94,32 @@ func exec_state_bounce():
 	velocity.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
 	Global.STATE_PLAYER = "Move_Normal"
 
+
+func get_animation_y():
+	
+	if velocity.y < 0:
+		Global.Player["Animation"] = "Jump"
+	else:
+		Global.Player["Animation"] = "Fall"
+
+func get_animation_x():
+	
+	if velocity.x == 0:
+		Global.Player["Animation"] = "Idle"
+	else:
+		if GlobalDictionaries.current_data["Flags"]["Can_Push"] == true:
+			if GlobalDictionaries.current_data["Flags"]["Crate_R"]:
+				if $Sprite2D.flip_h:
+					Global.Player["Animation"] = "Push"
+				else:
+					Global.Player["Animation"] = "Pull"
+			else:
+				if $Sprite2D.flip_h:
+					Global.Player["Animation"] = "Pull"
+				else:
+					Global.Player["Animation"] = "Push"
+		else:
+			Global.Player["Animation"] = "Run"
 
 
 func set_animation():

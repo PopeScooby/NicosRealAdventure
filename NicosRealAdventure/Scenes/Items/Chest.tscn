@@ -87,7 +87,7 @@ position = Vector2( 0, 3.56357 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16

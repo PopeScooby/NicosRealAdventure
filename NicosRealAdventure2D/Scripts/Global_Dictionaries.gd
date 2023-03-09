@@ -106,7 +106,7 @@ func get_game_info_dict():
 		"Gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 		"Acceleration": 200,
 		"SpeedMax": 800,
-		"JumpHeight": -1000,
+		"JumpHeight": -1100,
 		"Dir_Curr": 1,
 		"Dir_Prev": 1
 		}

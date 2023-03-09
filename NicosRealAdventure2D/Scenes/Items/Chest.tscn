@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb3664u16nlni"]
+[gd_scene load_steps=14 format=3 uid="uid://bb3664u16nlni"]
 
+[ext_resource type="Script" path="res://Scripts/Item_Chest.gd" id="1_pokab"]
 [ext_resource type="Texture2D" uid="uid://cbbuj8gys0fyx" path="res://Textures/Items/Chest/Chest_01.png" id="1_qraih"]
+[ext_resource type="Texture2D" uid="uid://hwhe86likx1y" path="res://Textures/Items/Chest/Chest_02.png" id="3_lnxif"]
+[ext_resource type="Texture2D" uid="uid://c2jt557ks3kst" path="res://Textures/Items/Chest/Chest_03.png" id="4_2lbs3"]
+[ext_resource type="Texture2D" uid="uid://uw27f3bbj8k2" path="res://Textures/Items/Chest/Chest_04.png" id="5_2en5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3f1m8"]
 size = Vector2(112, 111)
@@ -8,7 +12,102 @@ size = Vector2(112, 111)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8rxt"]
 size = Vector2(218, 20)
 
+[sub_resource type="Animation" id="Animation_s6tff"]
+resource_name = "Chest_Open"
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_qraih"), ExtResource("3_lnxif"), ExtResource("4_2lbs3"), ExtResource("5_2en5d")]
+}
+
+[sub_resource type="Animation" id="Animation_hv01h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_qraih")]
+}
+
+[sub_resource type="Animation" id="Animation_c8krr"]
+resource_name = "Chest_Close"
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_2en5d"), ExtResource("4_2lbs3"), ExtResource("3_lnxif"), ExtResource("1_qraih")]
+}
+
+[sub_resource type="Animation" id="Animation_6oa7a"]
+resource_name = "Chest_Opened"
+length = 0.1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_2en5d")]
+}
+
+[sub_resource type="Animation" id="Animation_r031q"]
+resource_name = "Chest_Closed"
+length = 0.1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_qraih")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdef3"]
+_data = {
+"Chest_Close": SubResource("Animation_c8krr"),
+"Chest_Closed": SubResource("Animation_r031q"),
+"Chest_Open": SubResource("Animation_s6tff"),
+"Chest_Opened": SubResource("Animation_6oa7a"),
+"RESET": SubResource("Animation_hv01h")
+}
+
 [node name="Chest" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_pokab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 8.5)
@@ -24,3 +123,10 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_k8rxt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pdef3")
+}
+
+[connection signal="body_entered" from="Area2D_CanOpen" to="." method="_on_area_2d_can_open_body_entered"]
+[connection signal="body_exited" from="Area2D_CanOpen" to="." method="_on_area_2d_can_open_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

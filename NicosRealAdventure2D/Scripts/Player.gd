@@ -24,7 +24,9 @@ func check_state():
 	pass
 
 func exec_state(delta):
-	if Global.STATE_PLAYER == "Move_Normal":
+	if Global.STATE_PLAYER == "Bounce":
+		exec_state_bounce()
+	elif Global.STATE_PLAYER == "Move_Normal":
 		exec_state_move(delta)
 
 
@@ -58,7 +60,11 @@ func exec_state_move(delta):
 			Global.Player["Animation"] = "Run"
 		
 	
-	if Input.get_axis("move_left", "move_right"):
+	
+	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
+		exec_state_open_chest()
+		
+	elif Input.get_axis("move_left", "move_right"):
 		exec_state_move_horizontal(Input.get_axis("move_left", "move_right"))
 	
 	else:
@@ -79,15 +85,24 @@ func exec_state_move_horizontal(direction):
 		$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.flip_h = false
-	
 
 func exec_state_move_idle():
 	velocity.x = move_toward(velocity.x, 0, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
-	
 
 func exec_state_move_jump():
 	velocity.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
-	
+
+func exec_state_open_chest():
+
+	GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] = false
+	Global.STATE_PLAYER = "Chest_Opening"
+	Global.Player["Animation"] = "Interact"
+
+func exec_state_bounce():
+	velocity.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
+	Global.STATE_PLAYER = "Move_Normal"
+
+
 
 func set_animation():
 	
@@ -96,7 +111,6 @@ func set_animation():
 
 	if curr_anim != anim_name:
 		$AnimationPlayer.play(anim_name)
-
 
 #	if Global.Player["Animation"] == "VinesIdle":
 #		$AnimationPlayer.playback_speed = 0
@@ -108,26 +122,10 @@ func set_animation():
 #		if curr_anim != anim_name:
 #			$AnimationPlayer.play(anim_name)
 
-#const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
-#
-## Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#	# Add the gravity.
-#	if not is_on_floor():
-#		velocity.y += gravity * delta
-#
-#	# Handle Jump.
-#	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-#		velocity.y = JUMP_VELOCITY
-#
-#	# Get the input direction and handle the movement/deceleration.
-#	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction = Input.get_axis("move_left", "move_right")
-#	if direction:
-#		velocity.x = direction * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-#	move_and_slide()
+
+func _on_animation_player_animation_finished(anim_name):
+	
+	if anim_name.find("_Interact") != -1:
+		Global.STATE_PLAYER = "Move_Normal"
+

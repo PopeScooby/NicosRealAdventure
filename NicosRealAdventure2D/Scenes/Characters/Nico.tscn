@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bq6vdxko1pocd"]
+[gd_scene load_steps=34 format=3 uid="uid://bq6vdxko1pocd"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_leivy"]
 [ext_resource type="Texture2D" uid="uid://u67i40cjlth4" path="res://Textures/Characters/Nico/Idle/Idle_00.png" id="2_vyni2"]
@@ -14,6 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://c1gpja44jdq82" path="res://Textures/Characters/Nico/Run/Run_09.png" id="12_kmte7"]
 [ext_resource type="Texture2D" uid="uid://wgwsqtj0i50r" path="res://Textures/Characters/Nico/Jump/Jump_02.png" id="13_q62qd"]
 [ext_resource type="Texture2D" uid="uid://berpu6s61vkxd" path="res://Textures/Characters/Nico/Jump/Jump_09.png" id="14_f6yf2"]
+[ext_resource type="Texture2D" uid="uid://dgludy1ka8blx" path="res://Textures/Characters/Nico/Push/Push_00.png" id="15_1fl5w"]
+[ext_resource type="Texture2D" uid="uid://cghhn1lnovjcu" path="res://Textures/Characters/Nico/Push/Push_01.png" id="16_oskut"]
+[ext_resource type="Texture2D" uid="uid://dvb04otupn8e7" path="res://Textures/Characters/Nico/Push/Push_02.png" id="17_4vlnn"]
+[ext_resource type="Texture2D" uid="uid://dd54v3umvu11b" path="res://Textures/Characters/Nico/Push/Push_03.png" id="18_481eg"]
+[ext_resource type="Texture2D" uid="uid://c3j6murl5y1o4" path="res://Textures/Characters/Nico/Push/Push_04.png" id="19_kmrss"]
+[ext_resource type="Texture2D" uid="uid://76xipoib0d1p" path="res://Textures/Characters/Nico/Push/Push_05.png" id="20_c6ciu"]
+[ext_resource type="Texture2D" uid="uid://w0g1b8svqi0v" path="res://Textures/Characters/Nico/Push/Push_06.png" id="21_wtq4t"]
+[ext_resource type="Texture2D" uid="uid://dwnxbd3ecotdu" path="res://Textures/Characters/Nico/Push/Push_07.png" id="22_fmjx8"]
+[ext_resource type="Texture2D" uid="uid://cts62e8enlml0" path="res://Textures/Characters/Nico/Push/Push_08.png" id="23_1hrsy"]
+[ext_resource type="Texture2D" uid="uid://7c3ttiybbt1e" path="res://Textures/Characters/Nico/Push/Push_09.png" id="24_8gn00"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xodwf"]
 radius = 58.0
@@ -462,11 +472,189 @@ tracks/6/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_gehbb"]
+resource_name = "Nico_Push"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("15_1fl5w"), ExtResource("16_oskut"), ExtResource("17_4vlnn"), ExtResource("18_481eg"), ExtResource("19_kmrss"), ExtResource("20_c6ciu"), ExtResource("21_wtq4t"), ExtResource("22_fmjx8"), ExtResource("23_1hrsy"), ExtResource("24_8gn00")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hp6ij"]
+resource_name = "Nico_Interact"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_vyni2"), ExtResource("15_1fl5w"), ExtResource("2_vyni2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oilxs"]
 _data = {
 "Nico_Fall": SubResource("Animation_1g7j8"),
 "Nico_Idle": SubResource("Animation_fpq13"),
+"Nico_Interact": SubResource("Animation_hp6ij"),
 "Nico_Jump": SubResource("Animation_84rmk"),
+"Nico_Push": SubResource("Animation_gehbb"),
 "Nico_Run": SubResource("Animation_jrqni"),
 "RESET": SubResource("Animation_3wa46")
 }
@@ -489,3 +677,5 @@ zoom = Vector2(0.5, 0.5)
 libraries = {
 "": SubResource("AnimationLibrary_oilxs")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://jbg17y1mrn3f"]
+
+[ext_resource type="Texture2D" uid="uid://bbop24p1bcaua" path="res://Textures/Items/Coins/Skull/Skull_Rotating_01.png" id="1_3hyx2"]
+[ext_resource type="Script" path="res://Scripts/Item_Coin.gd" id="1_63okm"]
+[ext_resource type="Texture2D" uid="uid://bsmhh5frxjbu5" path="res://Textures/Items/Coins/Skull/Skull_Rotating_02.png" id="2_ucrng"]
+[ext_resource type="Texture2D" uid="uid://t2jrcq0gepni" path="res://Textures/Items/Coins/Skull/Skull_Rotating_03.png" id="3_bsugw"]
+[ext_resource type="Texture2D" uid="uid://cwy20vysktjmy" path="res://Textures/Items/Coins/Skull/Skull_Rotating_04.png" id="4_sevye"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8tpg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3hyx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ucrng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bsugw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sevye")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvds6"]
+radius = 48.3839
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_63okm")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.374, 0.374)
+sprite_frames = SubResource("SpriteFrames_a8tpg")
+frame_progress = 0.866575
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pvds6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

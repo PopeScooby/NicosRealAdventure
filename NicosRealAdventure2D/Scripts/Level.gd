@@ -43,8 +43,27 @@ func level_setup():
 	Global.Level = Global.Player["Levels"][str(level_num)]
 
 #	level_setup_timer()
-#	level_setup_coins()
+	level_setup_coins()
 #	level_setup_chests()
 #	level_setup_gems()
 	GlobalDictionaries.load_current_data()
 #	level_setup_items()
+
+func level_setup_coins():
+
+	var level_coins_count = get_tree().get_nodes_in_group("Coins").size()
+	var dict_coins_count = Global.Level["Coins"].size()
+	var Coin_Curr = 1
+
+	if level_coins_count != dict_coins_count:
+		Global.Level["Coins"] = []
+		while Coin_Curr <= level_coins_count:
+			Global.Level["Coins"].append(true)
+			Coin_Curr += 1
+
+	var Coins = Global.Level["Coins"]
+	Coin_Curr = 1
+
+	while Coin_Curr <= level_coins_count:
+		get_node("Treasure/Coin" + str(Coin_Curr)).visible = Coins[Coin_Curr - 1]
+		Coin_Curr += 1

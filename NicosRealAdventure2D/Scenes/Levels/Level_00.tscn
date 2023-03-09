@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://hd3k3fv3am7r"]
+[gd_scene load_steps=8 format=3 uid="uid://hd3k3fv3am7r"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_y8txq"]
 [ext_resource type="Texture2D" uid="uid://dyuc5t812erda" path="res://Textures/Tilesets/Fantasy/Forest/Forest_02.png" id="2_0ifi4"]
 [ext_resource type="PackedScene" uid="uid://bq6vdxko1pocd" path="res://Scenes/Characters/Nico.tscn" id="2_fceyn"]
+[ext_resource type="PackedScene" uid="uid://jbg17y1mrn3f" path="res://Scenes/Items/Coin.tscn" id="3_p1kdw"]
+[ext_resource type="PackedScene" uid="uid://u1n0aal1hxry" path="res://Scenes/Interface/GameplayInterface.tscn" id="5_lr2ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yiqoj"]
 resource_name = "Forest_02"
@@ -44,6 +46,9 @@ layer_0/tile_data = PackedInt32Array(131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 6
 
 [node name="Treasure" type="Node2D" parent="."]
 
+[node name="Coin1" parent="Treasure" instance=ExtResource("3_p1kdw")]
+position = Vector2(964, 0)
+
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_fceyn")]
@@ -54,3 +59,5 @@ layer_0/tile_data = PackedInt32Array(131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 6
 format = 2
 
 [node name="Foreground" type="Node2D" parent="."]
+
+[node name="GameplayInterface" parent="." instance=ExtResource("5_lr2ef")]

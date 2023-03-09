@@ -64,13 +64,12 @@ func exec_state_move(delta):
 	else:
 		exec_state_move_idle()
 	
-	
 	if is_on_floor():
 		if Input.is_action_just_pressed("move_jump"):
 			exec_state_move_jump()
 	
 	set_animation()
-
+	
 	move_and_slide()
 
 func exec_state_move_horizontal(direction):
@@ -81,30 +80,14 @@ func exec_state_move_horizontal(direction):
 	else:
 		$Sprite2D.flip_h = false
 	
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Run"
-#	else:
-#		if velocity.y < 0:
-#			Global.Player["Animation"] = "Jump"
-#		else:
-#			Global.Player["Animation"] = "Fall"
 
 func exec_state_move_idle():
 	velocity.x = move_toward(velocity.x, 0, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
 	
-#	if is_on_floor():
-#		Global.Player["Animation"] = "Idle"
-#	else:
-#		if velocity.y < 0 and GlobalDictionaries.current_data["Flags"]["Can_Climb"] == false:
-#			Global.Player["Animation"] = "Jump"
-#		else:
-#			if  GlobalDictionaries.current_data["Flags"]["On_Elevator"] == false:
-#				Global.Player["Animation"] = "Fall"
-#			else:
-#				Global.Player["Animation"] = "Idle"
 
 func exec_state_move_jump():
 	velocity.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
+	
 
 func set_animation():
 	

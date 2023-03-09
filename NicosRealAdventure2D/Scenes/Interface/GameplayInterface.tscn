@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://u1n0aal1hxry"]
+
+[ext_resource type="Texture2D" uid="uid://bbop24p1bcaua" path="res://Textures/Items/Coins/Skull/Skull_Rotating_01.png" id="1_182pr"]
+[ext_resource type="Script" path="res://Scripts/GameplayInterface.gd" id="1_fg4ib"]
+[ext_resource type="FontFile" uid="uid://dlkflv0sq34cy" path="res://Fonts/IMMORTAL.ttf" id="2_ptdpw"]
+
+[node name="GameplayInterface" type="CanvasLayer"]
+script = ExtResource("1_fg4ib")
+
+[node name="Coin" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 44.0
+offset_bottom = 43.0
+
+[node name="Coin_Image" type="TextureRect" parent="Coin"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_182pr")
+expand_mode = 1
+
+[node name="Coin_x_Label" type="Label" parent="Coin"]
+texture_filter = 4
+layout_mode = 0
+offset_left = 42.0
+offset_top = -3.0
+offset_right = 65.0
+offset_bottom = 38.0
+theme_override_fonts/font = ExtResource("2_ptdpw")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="Coin_Count_Label" type="Label" parent="Coin"]
+texture_filter = 4
+layout_mode = 0
+offset_left = 61.0
+offset_top = -7.0
+offset_right = 169.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("2_ptdpw")
+theme_override_font_sizes/font_size = 45
+text = "0"
+
+[node name="Hearts" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Item" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

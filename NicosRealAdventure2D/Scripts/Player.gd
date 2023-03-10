@@ -48,17 +48,13 @@ func exec_state_move(delta):
 	if not is_on_floor():
 		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
 		get_animation_y()
-		
 	else:
 		get_animation_x()
 	
-	
 	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
 		exec_state_open_chest()
-		
 	elif Input.get_axis("move_left", "move_right"):
 		exec_state_move_horizontal(Input.get_axis("move_left", "move_right"))
-	
 	else:
 		exec_state_move_idle()
 	

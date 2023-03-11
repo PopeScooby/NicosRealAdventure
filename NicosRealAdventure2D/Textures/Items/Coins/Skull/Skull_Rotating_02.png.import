@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsmhh5frxjbu5"
-path="res://.godot/imported/Skull_Rotating_02.png-8bc490fac294b70d7e0c9d45107432cf.ctex"
+path="res://.godot/imported/Skull_Rotating_02.png-db18eebd9f3b5bd009dd6baa80391883.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Coins/skull/Skull_Rotating_02.png"
-dest_files=["res://.godot/imported/Skull_Rotating_02.png-8bc490fac294b70d7e0c9d45107432cf.ctex"]
+source_file="res://Textures/Items/Coins/Skull/Skull_Rotating_02.png"
+dest_files=["res://.godot/imported/Skull_Rotating_02.png-db18eebd9f3b5bd009dd6baa80391883.ctex"]
 
 [params]
 

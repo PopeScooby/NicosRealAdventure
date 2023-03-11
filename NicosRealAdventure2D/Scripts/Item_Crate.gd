@@ -4,6 +4,7 @@ var in_water = false
 var flow_dir = 1
 var flow_speed = 150
 var on_adventurer = false
+var water_body = ""
 
 func _physics_process(delta):
 	

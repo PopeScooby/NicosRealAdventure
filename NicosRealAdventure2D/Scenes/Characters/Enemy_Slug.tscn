@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbrv5075pfot"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy_Slug.gd" id="1_nhkak"]
+[ext_resource type="Texture2D" uid="uid://c64tpwkf3gmtm" path="res://Textures/Characters/Slug/Slug_01.png" id="2_3op1p"]
+[ext_resource type="Texture2D" uid="uid://6whmsolpi5p1" path="res://Textures/Characters/Slug/Slug_02.png" id="3_1c712"]
+[ext_resource type="Texture2D" uid="uid://3aomtpsq1axp" path="res://Textures/Characters/Slug/Slug_03.png" id="4_mhaft"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddo54"]
+radius = 43.0
+height = 146.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuloq"]
+radius = 47.0
+height = 174.0
+
+[sub_resource type="Animation" id="Animation_ury3g"]
+resource_name = "MoveNormal"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_3op1p"), ExtResource("3_1c712"), ExtResource("4_mhaft")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_48y24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_3op1p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ygdg"]
+_data = {
+"MoveNormal": SubResource("Animation_ury3g"),
+"RESET": SubResource("Animation_48y24")
+}
+
+[node name="Enemy_Slug" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_nhkak")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3op1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ddo54")
+
+[node name="Area2D_Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Hitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tuloq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ygdg")
+}
+
+[node name="Timer_Rehit" type="Timer" parent="."]

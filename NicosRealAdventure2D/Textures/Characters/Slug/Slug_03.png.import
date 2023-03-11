@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbop24p1bcaua"
-path="res://.godot/imported/Skull_Rotating_01.png-6d22da5f700131a358858caa0b3b6151.ctex"
+uid="uid://3aomtpsq1axp"
+path="res://.godot/imported/Slug_03.png-724f5f4d9a0cd7024f649ed8eabcebcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Coins/Skull/Skull_Rotating_01.png"
-dest_files=["res://.godot/imported/Skull_Rotating_01.png-6d22da5f700131a358858caa0b3b6151.ctex"]
+source_file="res://Textures/Characters/Slug/Slug_03.png"
+dest_files=["res://.godot/imported/Slug_03.png-724f5f4d9a0cd7024f649ed8eabcebcc.ctex"]
 
 [params]
 

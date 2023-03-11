@@ -23,11 +23,13 @@ func _physics_process(delta):
 	check_state()
 	exec_state(delta)
 
+
 func check_state():
 	if GlobalDictionaries.current_data["Hearts_Current"] <= 0 and Global.STATE_PLAYER != "Dead":
 		Global.STATE_PLAYER = "Dying"
 	elif Global.STATE_PLAYER == "InWater":
 		Global.STATE_PLAYER = "Dying"
+
 
 func exec_state(delta):
 	if Global.STATE_PLAYER == "Dying":
@@ -65,8 +67,7 @@ func exec_state_move(delta):
 		if Input.is_action_just_pressed("move_jump"):
 			exec_state_move_jump()
 	
-	set_animation()
-	
+	set_animation()	
 	move_and_slide()
 
 func exec_state_move_horizontal(direction):
@@ -88,22 +89,30 @@ func exec_state_move_vines(delta):
 	var dir_y = Input.get_axis("move_up", "move_down")
 	var dir_x = Input.get_axis("move_left", "move_right")
 	
+	if not is_on_floor():
+		if dir_x or dir_y:
+			Global.Player["Animation"] = "Vines"
+		else:
+			Global.Player["Animation"] = "VinesIdle"
+	else:
+		get_animation_x()
+	
 	if dir_x:
 		exec_state_move_horizontal_vines(dir_x)
 	elif dir_y:
 		exec_state_move_vertical_vines(dir_y)
 	else:
 		exec_state_idle_vines()
-		
-	move_and_slide()
 	
+	set_animation()
+	move_and_slide()
+
 func exec_state_move_horizontal_vines(direction):
 	if is_on_floor():
 		velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
 	else:
 		velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"] / 2
-	
-	
+
 func exec_state_move_vertical_vines(direction):
 	if direction < 0:
 		velocity.y = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
@@ -113,33 +122,6 @@ func exec_state_move_vertical_vines(direction):
 func exec_state_idle_vines():
 	velocity.x = 0
 	velocity.y = 0
-	
-#	if not is_on_floor():
-#		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
-#		get_animation_y()
-#	else:
-#		get_animation_x()
-#
-#	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
-#		exec_state_open_chest()
-#	if GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
-#		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
-#		exec_state_damage()
-#	elif dir_x:
-#		exec_state_move_horizontal(dir_x)
-##	elif GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
-##		exec_state_move_vines()
-#	else:
-#		exec_state_move_idle()
-#
-#	if is_on_floor():
-#		if Input.is_action_just_pressed("move_jump"):
-#			exec_state_move_jump()
-#
-#	set_animation()
-#
-#	move_and_slide()
-
 
 func exec_state_open_chest():
 
@@ -172,7 +154,6 @@ func get_animation_y():
 	else:
 		Global.Player["Animation"] = "Fall"
 
-
 func get_animation_x():
 	
 	if velocity.x == 0:
@@ -204,25 +185,17 @@ func set_player():
 		Global.STATE_PLAYER = "Move_Normal"
 	else:
 		Global.Player = GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])]
-		
 
 func set_animation():
-	
-	var anim_name = Global.Player["Name_Explorer"] + "_" + Global.Player["Animation"]
-	var curr_anim = $AnimationPlayer.current_animation
+	if Global.Player["Animation"] == "VinesIdle":
+		$AnimationPlayer.speed_scale = 0
+	else:
+		$AnimationPlayer.speed_scale = 1
+		var anim_name = Global.Player["Name_Explorer"] + "_" + Global.Player["Animation"]
+		var curr_anim = $AnimationPlayer.current_animation
 
-	if curr_anim != anim_name:
-		$AnimationPlayer.play(anim_name)
-
-#	if Global.Player["Animation"] == "VinesIdle":
-#		$AnimationPlayer.playback_speed = 0
-#	else:
-#		$AnimationPlayer.playback_speed = 1
-#		var anim_name = Global.Player["Name_Explorer"] + "_" + Global.Player["Animation"]
-#		var curr_anim = $AnimationPlayer.current_animation
-#
-#		if curr_anim != anim_name:
-#			$AnimationPlayer.play(anim_name)
+		if curr_anim != anim_name:
+			$AnimationPlayer.play(anim_name)
 
 func set_camera():
 	
@@ -236,8 +209,6 @@ func set_camera():
 		$Camera2D.position += Vector2(0, 15)
 	if Input.is_action_pressed("camera_center"):
 		$Camera2D.position = Vector2(0, 0)
-	
-
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -246,7 +217,6 @@ func _on_animation_player_animation_finished(anim_name):
 		Global.STATE_PLAYER = "Move_Normal"
 	elif anim_name.find("_Die") != -1:
 		Global.STATE_PLAYER = "Dead"
-
 
 func _on_animation_player_2_animation_finished(anim_name):
 	pass # Replace with function body.

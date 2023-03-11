@@ -26,17 +26,7 @@ func _ready():
 
 func _process(delta):
 	
-	if Input.is_action_pressed("camera_right"):
-		$Camera2D.position += Vector2(15, 0)
-	if Input.is_action_pressed("camera_left"):
-		$Camera2D.position += Vector2(-15, 0)
-	if Input.is_action_pressed("camera_up"):
-		$Camera2D.position += Vector2(0, -15)
-	if Input.is_action_pressed("camera_down"):
-		$Camera2D.position += Vector2(0, 15)
-	if Input.is_action_pressed("camera_center"):
-		$Camera2D.position = Vector2(0, 0)
-		
+	set_camera()
 	check_state()
 	exec_state()
 
@@ -450,6 +440,20 @@ func set_animation():
 #	var anim_curr = $AnimationPlayer2.current_animation
 #	if anim_curr != anim_name:
 #		$AnimationPlayer2.play(anim_name)
+
+func set_camera():
+	
+	if Input.is_action_pressed("camera_right"):
+		$Camera2D.position += Vector2(15, 0)
+	if Input.is_action_pressed("camera_left"):
+		$Camera2D.position += Vector2(-15, 0)
+	if Input.is_action_pressed("camera_up"):
+		$Camera2D.position += Vector2(0, -15)
+	if Input.is_action_pressed("camera_down"):
+		$Camera2D.position += Vector2(0, 15)
+	if Input.is_action_pressed("camera_center"):
+		$Camera2D.position = Vector2(0, 0)
+	
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 

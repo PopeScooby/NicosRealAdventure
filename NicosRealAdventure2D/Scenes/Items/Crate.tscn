@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://8atbqotb11ju"]
+[gd_scene load_steps=6 format=3 uid="uid://8atbqotb11ju"]
 
 [ext_resource type="Texture2D" uid="uid://btd872v1n55yf" path="res://Textures/Items/Crate/Crate.png" id="1_6b3rd"]
 [ext_resource type="Script" path="res://Scripts/Item_Crate.gd" id="1_sc4sr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75e75"]
-size = Vector2(194, 196)
+size = Vector2(195, 196)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcjv4"]
 size = Vector2(257, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b17tg"]
+size = Vector2(212, 25)
 
 [node name="Crate" type="CharacterBody2D"]
 collision_layer = 4
@@ -19,13 +22,21 @@ scale = Vector2(1.85, 1.85)
 texture = ExtResource("1_6b3rd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_75e75")
 
 [node name="Area2D_Interact" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Interact"]
 shape = SubResource("RectangleShape2D_fcjv4")
+
+[node name="Area2D_Float" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Float"]
+position = Vector2(0, 94.5)
+shape = SubResource("RectangleShape2D_b17tg")
 
 [connection signal="body_entered" from="Area2D_Interact" to="." method="_on_area_2d_interact_body_entered"]
 [connection signal="body_exited" from="Area2D_Interact" to="." method="_on_area_2d_interact_body_exited"]

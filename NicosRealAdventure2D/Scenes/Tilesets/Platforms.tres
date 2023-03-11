@@ -1,7 +1,34 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://w2pfok31aou0"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://w2pfok31aou0"]
 
 [ext_resource type="Texture2D" uid="uid://dyuc5t812erda" path="res://Textures/Tilesets/Fantasy/Forest/Forest_02.png" id="1_jg0ws"]
+[ext_resource type="Texture2D" uid="uid://5i0cbyci7f2u" path="res://Textures/Tilesets/Fantasy/Forest/Forest_16.png" id="1_q2mjp"]
+[ext_resource type="Texture2D" uid="uid://cmmfv7sd0vgsn" path="res://Textures/Tilesets/Fantasy/Forest/Forest_17.png" id="2_air5o"]
 [ext_resource type="Texture2D" uid="uid://bpgpasr6a6nuk" path="res://Textures/Tilesets/Fantasy/Forest/Forest_05.png" id="2_ddedo"]
+[ext_resource type="Texture2D" uid="uid://bya5d8y7cv0fd" path="res://Textures/Tilesets/Fantasy/Spikes/Spike.png" id="2_hgroj"]
+[ext_resource type="Texture2D" uid="uid://bj50uwkqn05qo" path="res://Textures/Tilesets/Fantasy/Water/Water_01.png" id="3_wdyik"]
+[ext_resource type="Texture2D" uid="uid://b15x4oir6hwum" path="res://Textures/Tilesets/Fantasy/Water/Water_02.png" id="4_88qhm"]
+[ext_resource type="Texture2D" uid="uid://cqxpq0kwbcdrp" path="res://Textures/Tilesets/Fantasy/Vines/Vine_01.png" id="7_xsrhb"]
+[ext_resource type="Texture2D" uid="uid://ctd8bogk5tv0" path="res://Textures/Tilesets/Fantasy/Forest/Forest_08.png" id="8_smu6b"]
+[ext_resource type="Texture2D" uid="uid://beoh2bewnpf0j" path="res://Textures/Tilesets/Fantasy/Vines/Vine_02.png" id="8_wb2t4"]
+[ext_resource type="Texture2D" uid="uid://bam03ba8bbp3v" path="res://Textures/Tilesets/Fantasy/Vines/Vine_03.png" id="9_iatww"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hs8xy"]
+resource_name = "Forest_16"
+texture = ExtResource("1_q2mjp")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 0, 12, 3, -13, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5t8yn"]
+resource_name = "Forest_17"
+texture = ExtResource("2_air5o")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -64, -20, -10, -64, -4, -64, -64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yiqoj"]
 resource_name = "Forest_02"
@@ -12,6 +39,63 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c3dji"]
+resource_name = "Spikes"
+texture = ExtResource("2_hgroj")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kr4j7"]
+resource_name = "Water_Surface"
+texture = ExtResource("3_wdyik")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rvuh"]
+resource_name = "Water_River"
+texture = ExtResource("4_88qhm")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 6, 64, 5, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wwje"]
+resource_name = "Water_Waterfall"
+texture = ExtResource("4_88qhm")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51ldl"]
+resource_name = "Vine_01"
+texture = ExtResource("7_xsrhb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0tjv"]
+resource_name = "Vine_02"
+texture = ExtResource("8_wb2t4")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6q0q"]
+resource_name = "Vine_03"
+texture = ExtResource("9_iatww")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h37j7"]
 resource_name = "Forest_05"
 texture = ExtResource("2_ddedo")
@@ -21,9 +105,28 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mygy"]
+resource_name = "Forest_08"
+texture = ExtResource("8_smu6b")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, -5, -64, -5)
+
 [resource]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 5
 sources/2 = SubResource("TileSetAtlasSource_yiqoj")
 sources/5 = SubResource("TileSetAtlasSource_h37j7")
+sources/20 = SubResource("TileSetAtlasSource_c3dji")
+sources/21 = SubResource("TileSetAtlasSource_kr4j7")
+sources/22 = SubResource("TileSetAtlasSource_7rvuh")
+sources/23 = SubResource("TileSetAtlasSource_4wwje")
+sources/16 = SubResource("TileSetAtlasSource_hs8xy")
+sources/17 = SubResource("TileSetAtlasSource_5t8yn")
+sources/8 = SubResource("TileSetAtlasSource_4mygy")
+sources/24 = SubResource("TileSetAtlasSource_51ldl")
+sources/25 = SubResource("TileSetAtlasSource_v0tjv")
+sources/26 = SubResource("TileSetAtlasSource_l6q0q")

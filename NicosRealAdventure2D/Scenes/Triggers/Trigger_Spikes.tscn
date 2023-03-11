@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1bu2ajf2lccr"]
+
+[ext_resource type="Script" path="res://Scripts/Trigger_Spikes.gd" id="1_ra6lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2dyg"]
+size = Vector2(469, 37)
+
+[node name="Trigger_Spikes" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_ra6lp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_j2dyg")
+
+[node name="Timer_Damage" type="Timer" parent="."]
+wait_time = 1.334
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer_Damage" to="." method="_on_timer_damage_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://w82wedteaukm"]
+
+[ext_resource type="Script" path="res://Scripts/Trigger_Vine.gd" id="1_elusv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n3odx"]
+height = 422.0
+
+[node name="Trigger_Vine" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_elusv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_n3odx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

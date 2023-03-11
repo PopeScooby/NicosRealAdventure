@@ -13,18 +13,26 @@ extends CharacterBody2D
 #
 #InWater:
 #
+#Bounce: 
+
 func _ready():
 	set_player()
 
 func _physics_process(delta):
+	set_camera()
 	check_state()
 	exec_state(delta)
 
 func check_state():
-	pass
+	if GlobalDictionaries.current_data["Hearts_Current"] <= 0 and Global.STATE_PLAYER != "Dead":
+		Global.STATE_PLAYER = "Dying"
+	elif Global.STATE_PLAYER == "InWater":
+		Global.STATE_PLAYER = "Dying"
 
 func exec_state(delta):
-	if Global.STATE_PLAYER == "Bounce":
+	if Global.STATE_PLAYER == "Dying":
+		exec_state_dying()
+	elif Global.STATE_PLAYER == "Bounce":
 		exec_state_bounce()
 	elif Global.STATE_PLAYER == "Move_Normal":
 		exec_state_move(delta)
@@ -53,6 +61,9 @@ func exec_state_move(delta):
 	
 	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
 		exec_state_open_chest()
+	if GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
+		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
+		exec_state_damage()
 	elif Input.get_axis("move_left", "move_right"):
 		exec_state_move_horizontal(Input.get_axis("move_left", "move_right"))
 	else:
@@ -89,6 +100,19 @@ func exec_state_open_chest():
 func exec_state_bounce():
 	velocity.y = GlobalDictionaries.current_data["Interactions"]["Jumpshroom"]["BounceHeight"]
 	Global.STATE_PLAYER = "Move_Normal"
+
+func exec_state_damage():
+	if GlobalDictionaries.current_data["Hearts_Current"] > 0:
+		GlobalDictionaries.current_data["Hearts_Current"] -= 1
+		$AnimationPlayer2.play("Damage")
+	else:
+		Global.STATE_PLAYER = "Dying"
+
+func exec_state_dying():
+	velocity.x = 0
+	Global.Player["Animation"] = "Die"
+	set_animation()
+
 
 
 func get_animation_y():
@@ -136,10 +160,29 @@ func set_animation():
 #		if curr_anim != anim_name:
 #			$AnimationPlayer.play(anim_name)
 
+func set_camera():
+	
+	if Input.is_action_pressed("camera_right"):
+		$Camera2D.position += Vector2(15, 0)
+	if Input.is_action_pressed("camera_left"):
+		$Camera2D.position += Vector2(-15, 0)
+	if Input.is_action_pressed("camera_up"):
+		$Camera2D.position += Vector2(0, -15)
+	if Input.is_action_pressed("camera_down"):
+		$Camera2D.position += Vector2(0, 15)
+	if Input.is_action_pressed("camera_center"):
+		$Camera2D.position = Vector2(0, 0)
+	
+
 
 
 func _on_animation_player_animation_finished(anim_name):
 	
 	if anim_name.find("_Interact") != -1:
 		Global.STATE_PLAYER = "Move_Normal"
+	elif anim_name.find("_Die") != -1:
+		Global.STATE_PLAYER = "Dead"
 
+
+func _on_animation_player_2_animation_finished(anim_name):
+	pass # Replace with function body.

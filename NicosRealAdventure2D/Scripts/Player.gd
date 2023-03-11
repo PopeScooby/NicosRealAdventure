@@ -34,27 +34,17 @@ func exec_state(delta):
 		exec_state_dying()
 	elif Global.STATE_PLAYER == "Bounce":
 		exec_state_bounce()
-	elif Global.STATE_PLAYER == "Move_Normal":
+	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == false:
 		exec_state_move(delta)
-
-
-func set_player():
-	if Global.is_debug:
-		GlobalDictionaries.players["1"] = GlobalDictionaries.get_new_player_dict("Debug")
-		Global.Player = GlobalDictionaries.players["1"]
-		Global.Player["Name_Explorer"] = "Nico"
-		GlobalDictionaries.game["PlayerKey"] = "1"
-		GlobalDictionaries.game["Level_Current"] = int(get_parent().name.replace("Level_",""))
-		Global.Player["Level_Max"] = int(get_parent().name.replace("Level_",""))
-		Global.STATE_PLAYER = "Move_Normal"
-	else:
-		Global.Player = GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])]
-		
+	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
+		exec_state_move_vines(delta)
 
 func exec_state_move(delta):
-
+	
+	var dir_x = Input.get_axis("move_left", "move_right")
+	
 	if not is_on_floor():
-		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
+		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta		
 		get_animation_y()
 	else:
 		get_animation_x()
@@ -64,8 +54,10 @@ func exec_state_move(delta):
 	if GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
 		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
 		exec_state_damage()
-	elif Input.get_axis("move_left", "move_right"):
-		exec_state_move_horizontal(Input.get_axis("move_left", "move_right"))
+	elif dir_x:
+		exec_state_move_horizontal(dir_x)
+#	elif GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
+#		exec_state_move_vines()
 	else:
 		exec_state_move_idle()
 	
@@ -90,6 +82,64 @@ func exec_state_move_idle():
 
 func exec_state_move_jump():
 	velocity.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
+
+func exec_state_move_vines(delta):
+	
+	var dir_y = Input.get_axis("move_up", "move_down")
+	var dir_x = Input.get_axis("move_left", "move_right")
+	
+	if dir_x:
+		exec_state_move_horizontal_vines(dir_x)
+	elif dir_y:
+		exec_state_move_vertical_vines(dir_y)
+	else:
+		exec_state_idle_vines()
+		
+	move_and_slide()
+	
+func exec_state_move_horizontal_vines(direction):
+	if is_on_floor():
+		velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
+	else:
+		velocity.x = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"] / 2
+	
+	
+func exec_state_move_vertical_vines(direction):
+	if direction < 0:
+		velocity.y = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
+	else:
+		velocity.y = direction * (GlobalDictionaries.current_data["Game_Info"]["SpeedMax"] * 1.5)
+
+func exec_state_idle_vines():
+	velocity.x = 0
+	velocity.y = 0
+	
+#	if not is_on_floor():
+#		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta
+#		get_animation_y()
+#	else:
+#		get_animation_x()
+#
+#	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
+#		exec_state_open_chest()
+#	if GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
+#		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
+#		exec_state_damage()
+#	elif dir_x:
+#		exec_state_move_horizontal(dir_x)
+##	elif GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
+##		exec_state_move_vines()
+#	else:
+#		exec_state_move_idle()
+#
+#	if is_on_floor():
+#		if Input.is_action_just_pressed("move_jump"):
+#			exec_state_move_jump()
+#
+#	set_animation()
+#
+#	move_and_slide()
+
 
 func exec_state_open_chest():
 
@@ -116,11 +166,12 @@ func exec_state_dying():
 
 
 func get_animation_y():
-	
+
 	if velocity.y < 0:
 		Global.Player["Animation"] = "Jump"
 	else:
 		Global.Player["Animation"] = "Fall"
+
 
 func get_animation_x():
 	
@@ -141,6 +192,19 @@ func get_animation_x():
 		else:
 			Global.Player["Animation"] = "Run"
 
+
+func set_player():
+	if Global.is_debug:
+		GlobalDictionaries.players["1"] = GlobalDictionaries.get_new_player_dict("Debug")
+		Global.Player = GlobalDictionaries.players["1"]
+		Global.Player["Name_Explorer"] = "Nico"
+		GlobalDictionaries.game["PlayerKey"] = "1"
+		GlobalDictionaries.game["Level_Current"] = int(get_parent().name.replace("Level_",""))
+		Global.Player["Level_Max"] = int(get_parent().name.replace("Level_",""))
+		Global.STATE_PLAYER = "Move_Normal"
+	else:
+		Global.Player = GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])]
+		
 
 func set_animation():
 	

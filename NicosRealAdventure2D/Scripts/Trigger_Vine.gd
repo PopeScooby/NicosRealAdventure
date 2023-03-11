@@ -12,3 +12,4 @@ func _on_body_exited(body):
 
 	if body.name == "Player":
 		GlobalDictionaries.current_data["Flags"]["On_Vines"] = false
+		body.velocity.y = 0

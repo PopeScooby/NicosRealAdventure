@@ -53,7 +53,10 @@ func exec_state_move(delta):
 	
 	if Input.is_action_just_pressed("action_interact") and GlobalDictionaries.current_data["Flags"]["Can_OpenChest"] == true:
 		exec_state_open_chest()
-	if GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
+	elif GlobalDictionaries.current_data["Flags"]["On_Enemy"] == true:
+		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
+		exec_state_damage()
+	elif GlobalDictionaries.current_data["Flags"]["On_Spikes"] == true:
 		GlobalDictionaries.current_data["Flags"]["On_Spikes"] = false
 		exec_state_damage()
 	elif dir_x:

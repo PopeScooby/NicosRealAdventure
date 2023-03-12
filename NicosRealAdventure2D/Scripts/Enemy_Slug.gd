@@ -109,3 +109,29 @@ func set_task_next():
 	task_start_position = self.position
 	set_task_dest_position()
 
+
+func _on_area_2d_hitbox_body_entered(body):
+	if body.name == "Player" and GlobalDictionaries.current_data["Hearts_Current"] > 0:
+		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = true
+		$Timer_Rehit.start()
+	elif body.name == "Player" and GlobalDictionaries.current_data["Hearts_Current"] <= 0:
+		$Timer_Rehit.stop()
+
+func _on_area_2d_hitbox_body_exited(body):
+	$Timer_Rehit.stop()
+	GlobalDictionaries.current_data["Flags"]["On_Enemy"] = false
+
+func _on_timer_rehit_timeout():
+	if GlobalDictionaries.current_data["Hearts_Current"] > 0:
+		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = true
+		$Timer_Damage.start()
+	else:
+		$Timer_Damage.stop()
+
+#func _on_timer_rehit_timeout():
+#	if GlobalDictionaries.current_data["Hearts_Current"] > 0:
+#		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = true
+#		$Timer_Damage.start()
+#	else:
+#		$Timer_Damage.stop()
+

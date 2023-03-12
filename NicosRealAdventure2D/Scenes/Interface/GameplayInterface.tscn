@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://u1n0aal1hxry"]
+[gd_scene load_steps=5 format=3 uid="uid://u1n0aal1hxry"]
 
 [ext_resource type="Texture2D" uid="uid://bbop24p1bcaua" path="res://Textures/Items/Coins/Skull/Skull_Rotating_01.png" id="1_182pr"]
 [ext_resource type="Script" path="res://Scripts/GameplayInterface.gd" id="1_fg4ib"]
 [ext_resource type="FontFile" uid="uid://dlkflv0sq34cy" path="res://Fonts/IMMORTAL.ttf" id="2_ptdpw"]
+[ext_resource type="Texture2D" uid="uid://s5gwb07523mo" path="res://Textures/Interface/Heart/Heart.png" id="4_g55ql"]
 
 [node name="GameplayInterface" type="CanvasLayer"]
 script = ExtResource("1_fg4ib")
@@ -45,11 +46,50 @@ theme_override_font_sizes/font_size = 45
 text = "0"
 
 [node name="Hearts" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 1020.0
+offset_right = 1060.0
 offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="Hearts"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("4_g55ql")
+expand_mode = 1
+
+[node name="Heart2" type="TextureRect" parent="Hearts"]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 100.0
+offset_bottom = 50.0
+texture = ExtResource("4_g55ql")
+expand_mode = 1
+
+[node name="Heart3" type="TextureRect" parent="Hearts"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 150.0
+offset_bottom = 50.0
+texture = ExtResource("4_g55ql")
+expand_mode = 1
+
+[node name="Heart4" type="TextureRect" parent="Hearts"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 200.0
+offset_bottom = 50.0
+texture = ExtResource("4_g55ql")
+expand_mode = 1
+
+[node name="Heart5" type="TextureRect" parent="Hearts"]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 250.0
+offset_bottom = 50.0
+texture = ExtResource("4_g55ql")
+expand_mode = 1
 
 [node name="Item" type="Control" parent="."]
 visible = false

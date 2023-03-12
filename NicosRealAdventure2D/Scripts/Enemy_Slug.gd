@@ -62,7 +62,7 @@ func exec_state_move():
 		else:
 			velocity.y = Task["Speed"] * Task["Dir_Y"]
 	else:
-		velocity.y = gravity
+		velocity.y = gravity * 2
 	
 	task_prev_position = self.position
 	
@@ -124,9 +124,9 @@ func _on_area_2d_hitbox_body_exited(body):
 func _on_timer_rehit_timeout():
 	if GlobalDictionaries.current_data["Hearts_Current"] > 0:
 		GlobalDictionaries.current_data["Flags"]["On_Enemy"] = true
-		$Timer_Damage.start()
+		$Timer_Rehit.start()
 	else:
-		$Timer_Damage.stop()
+		$Timer_Rehit.stop()
 
 #func _on_timer_rehit_timeout():
 #	if GlobalDictionaries.current_data["Hearts_Current"] > 0:

@@ -108,11 +108,12 @@ position = Vector2(-919, -225)
 position = Vector2(2450, -764)
 
 [node name="Player" parent="." instance=ExtResource("2_fceyn")]
+position = Vector2(1860, -1692)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy_Slug" parent="Enemies" instance=ExtResource("15_ybike")]
-position = Vector2(2128, -1453)
+position = Vector2(2138, -1456)
 
 [node name="TileMap_Foreground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_tfquk")

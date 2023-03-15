@@ -77,3 +77,89 @@
     - **[Bubble1]:** “Whoa. Careful there. You could hurt yourself on those spikes down there. If you do get hurt it’s really tough to find places to heal”
   - PC Speaks…
     - **[Bubble1]:** “Thanks. Have you seen a Wizard or a Red Portal around here?”
+    
+    
+   
+## Brainstorming session 3/14
+
+**Action items**
+
+- Andrew - Find visual of “2d lighting effect” and post on GG Discord
+
+**Aesthetic**
+
+- AdventureTime - weird vibes (or a softened Rick & Morty)
+
+
+**Game Dynamics**
+
+- Finding the right balance of hand-holding and clever easter-eggs
+- Replay value - how do we make the game interesting using hidden features
+    - Fire — burn away obstacles of hidden passages
+    - Water — go into underwater areas by using enchanted bubble gum helmet
+    - Earth — Underground areas from digging
+- How do we introduce story points throughout the game, so that the player learns more and more about what’s really going on?
+
+**Feature Ideas**
+
+- Dark scenery/levels, with a findable item that gives off light and allows you to see through fog or darkness
+- Enemies that follow you and try to catch using Godot’s pathfinding engine
+- “Homing missiles” from enemies, lasers from spaceships
+- Slingshot or firework as possible attack for Nico
+    - Could primarily a feature for boss battles or later levels
+- Pet falcon as a way to retrieve hard-to-get items
+- Swarming rats beneath you
+- Item wheel - used to select which item you’ve got selected
+- Camera peek - allow the camera to move slightly relative to the character, to “peek” at the surroundings a bit
+- Jumpshroom - ability to collect and place jumpshrooms, which increase the characters jump height
+- Control jump height with duration of button press (e.g. briefly tap spacebar —> small jump)
+- Bubble gum floating to influence jump behavior
+- Canon to shoot you
+- Sentient asteroids 
+- Swimming
+- Fishing (using a lure item)
+    - Catch fish
+    - Eat fish to get hearts
+    - Heart container
+- Fire
+    - Burn away obstacles to reveal hidden passages, etc.
+    - Cook edible items
+- Dig (using a rusted shovel item) to dig loose dirt
+
+**Possible plot/story**
+
+- Four worlds
+    - Fantasy — forest, cave, castle
+        - You beat the wizard, and then you’re about to rescue some kids including your brother, but then everyone but you gets abducted by aliens
+        - you go chasing them, which is you how get separated from Tomlin again
+    - Sci-Fi/Aliens — Space ship, planet, moon, asteroid field
+    - Ninja — Feudal Japan, cherry blossoms, ninjas are cats
+        - Character change shape or form?  Becoming a dog temporarily
+        - Nine levels, where you fight a mini boss at each level (since a cat has nine levels)
+        - Level 10 — boss Mutant zombie cat head in jar
+        - Hop into canon, get fired into level four 
+        - You save your little brother, and have to decide
+    - Big city (Cyberpunk?) — 
+        - Level ideas
+            - Pseudo cut-scene on the ground level (sneak into sewer behind the crow of angry people)
+            - Start in the sewers
+            - Rooftops
+            - Elevators / stairs
+            - 
+        - “How is the cat getting to all these different places?!”
+        - “Why did you take the canon? You could’ve just taken the bus.”
+        - Ice climbers vibe (you and brother) or 
+            - switch between Nico and Tomlin to have them both in a particular place for puzzles, etc.
+            - Or just have younger brother just floating behind from bubblegum
+            - Or just have Tomlin follow you
+        - The Capitalist is the big-boss — 
+            - Fossil fuel attacks, emanates oil fumes
+            - Money
+
+- The wizard is kidnapping kids and passing them to human traffickers
+- For story intro, Nico is disinterested in younger brother until “oh shit” moment happens when wizard appears
+    - “Ugh, my dumb brother, blah blah blah”
+- 
+- The complexity of enemy interactions and items increases as the levels go on
+- At the end, you beat the wizard, and his wand accidentally goes off
+

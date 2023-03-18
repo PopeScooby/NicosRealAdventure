@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hd3k3fv3am7r"]
+[gd_scene load_steps=23 format=3 uid="uid://hd3k3fv3am7r"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_y8txq"]
 [ext_resource type="PackedScene" uid="uid://bq6vdxko1pocd" path="res://Scenes/Characters/Nico.tscn" id="2_fceyn"]
@@ -17,6 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://b4clnmmoy5h5w" path="res://Scenes/Triggers/Trigger_SetPosition.tscn" id="8_gjucu"]
 [ext_resource type="PackedScene" uid="uid://w82wedteaukm" path="res://Scenes/Triggers/Trigger_Vine.tscn" id="9_8coux"]
 [ext_resource type="PackedScene" uid="uid://bbrv5075pfot" path="res://Scenes/Characters/Enemy_Slug.tscn" id="15_ybike"]
+[ext_resource type="PackedScene" uid="uid://dnm01uiryd50j" path="res://Scenes/Characters/Enemy_Spider.tscn" id="16_exer3"]
+[ext_resource type="Script" path="res://Scripts/Enemy_Tasks.gd" id="17_7v8h5"]
+
+[sub_resource type="Curve2D" id="Curve2D_mqm5t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1900, -400, 0, 0, 0, 0, 1900, -1000, 0, 0, 0, 0, 3000, -1000, 0, 0, 0, 0, 3000, -1500, 0, 0, 0, 0, 3000, -1000, 0, 0, 0, 0, 1900, -1000, 0, 0, 0, 0, 1900, -400)
+}
+point_count = 7
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_enwph"]
 resource_name = "Forest_05"
@@ -38,7 +46,7 @@ format = 2
 
 [node name="Levers" type="Node2D" parent="."]
 
-[node name="Lever" parent="Levers" node_paths=PackedStringArray("mover_path") instance=ExtResource("2_ftbke")]
+[node name="Lever1" parent="Levers" node_paths=PackedStringArray("mover_path") instance=ExtResource("2_ftbke")]
 position = Vector2(-78, -624)
 rotation = 3.14159
 is_active = true
@@ -108,12 +116,43 @@ position = Vector2(-919, -225)
 position = Vector2(2450, -764)
 
 [node name="Player" parent="." instance=ExtResource("2_fceyn")]
-position = Vector2(1860, -1692)
+position = Vector2(1556, -265)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy_Slug" parent="Enemies" instance=ExtResource("15_ybike")]
+[node name="Enemy_Slug1" parent="Enemies" instance=ExtResource("15_ybike")]
 position = Vector2(2138, -1456)
+tasks_list = [{
+"Animation": "MoveNormal",
+"Dir_X": 1,
+"Dir_Y": 0,
+"Distance_x": 200,
+"Distance_y": 0,
+"Speed": 40
+}, {
+"Animation": "MoveNormal",
+"Dir_X": -1,
+"Dir_Y": 0,
+"Distance_x": 200,
+"Distance_y": 0,
+"Speed": 40
+}]
+
+[node name="Enemy_Spider1" parent="Enemies" instance=ExtResource("16_exer3")]
+position = Vector2(1831, -490)
+script = ExtResource("17_7v8h5")
+enemy_dict = {
+"IsLoop": true,
+"TaskIdx": 0,
+"Type": "Spider",
+"UseGravity": false
+}
+
+[node name="Paths" type="Node2D" parent="Enemies"]
+visible = false
+
+[node name="Enemy_Spider1_Path" type="Path2D" parent="Enemies/Paths"]
+curve = SubResource("Curve2D_mqm5t")
 
 [node name="TileMap_Foreground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_tfquk")

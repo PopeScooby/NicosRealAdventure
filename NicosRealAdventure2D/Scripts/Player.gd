@@ -46,7 +46,7 @@ func exec_state_move(delta):
 	var dir_x = Input.get_axis("move_left", "move_right")
 	
 	if not is_on_floor():
-		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta		
+		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta 
 		get_animation_y()
 	else:
 		get_animation_x()
@@ -61,14 +61,16 @@ func exec_state_move(delta):
 		exec_state_damage()
 	elif dir_x:
 		exec_state_move_horizontal(dir_x)
-#	elif GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
-#		exec_state_move_vines()
 	else:
 		exec_state_move_idle()
 	
-	if is_on_floor():
+	if Input.is_action_pressed("action_item_use") and GlobalDictionaries.current_data["Current_Item"] == "Jetpack":
+		exec_state_move_jump(GlobalDictionaries.current_data["Game_Info"]["Jump_Height"] * .7)
+	elif is_on_floor():
 		if Input.is_action_just_pressed("move_jump"):
-			exec_state_move_jump()
+			exec_state_move_jump(GlobalDictionaries.current_data["Game_Info"]["Jump_Height"])
+	elif Input.is_action_pressed("move_down"):
+		velocity.y += GlobalDictionaries.current_data["Game_Info"]["Gravity"] * delta 
 	
 	set_animation()	
 	move_and_slide()
@@ -84,8 +86,8 @@ func exec_state_move_horizontal(direction):
 func exec_state_move_idle():
 	velocity.x = move_toward(velocity.x, 0, GlobalDictionaries.current_data["Game_Info"]["SpeedMax"])
 
-func exec_state_move_jump():
-	velocity.y = GlobalDictionaries.current_data["Game_Info"]["JumpHeight"]
+func exec_state_move_jump(Jump_Height):
+	velocity.y = Jump_Height
 
 func exec_state_move_vines(delta):
 	
@@ -118,7 +120,7 @@ func exec_state_move_horizontal_vines(direction):
 
 func exec_state_move_vertical_vines(direction):
 	if direction < 0:
-		velocity.y = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"]
+		velocity.y = direction * GlobalDictionaries.current_data["Game_Info"]["SpeedMax"] * .7
 	else:
 		velocity.y = direction * (GlobalDictionaries.current_data["Game_Info"]["SpeedMax"] * 1.5)
 
@@ -153,7 +155,10 @@ func exec_state_dying():
 func get_animation_y():
 
 	if velocity.y < 0:
-		Global.Player["Animation"] = "Jump"
+		if Input.is_action_pressed("action_item_use") and GlobalDictionaries.current_data["Current_Item"] == "Jetpack":
+			Global.Player["Animation"] = "Jetpack"
+		else:
+			Global.Player["Animation"] = "Jump"
 	else:
 		Global.Player["Animation"] = "Fall"
 

@@ -26,7 +26,7 @@ func get_new_player_dict(PlayerName):
 		"Level_Max": 1,
 		"Animation": "",
 		"Animation2": "",
-		"Current_Item": "Empty",
+		"Current_Item": "Jetpack",
 		"Item_Data": get_item_data_dict(),
 		"Inventory": get_inventory_data(),
 		"Levels" : get_levels_dict(),
@@ -106,7 +106,8 @@ func get_game_info_dict():
 		"Gravity": ProjectSettings.get_setting("physics/2d/default_gravity"),
 		"Acceleration": 200,
 		"SpeedMax": 800,
-		"JumpHeight": -1100,
+		"Jump_Height": -1100,
+		"Jump_PushCount": 0,
 		"Dir_Curr": 1,
 		"Dir_Prev": 1
 		}

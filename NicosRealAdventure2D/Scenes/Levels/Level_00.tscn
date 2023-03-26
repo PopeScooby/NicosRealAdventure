@@ -121,7 +121,7 @@ position = Vector2(1556, -265)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy_Slug1" parent="Enemies" instance=ExtResource("15_ybike")]
-position = Vector2(2138, -1456)
+position = Vector2(2144, -1456)
 tasks_list = [{
 "Animation": "MoveNormal",
 "Dir_X": 1,

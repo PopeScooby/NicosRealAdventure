@@ -1,6 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://hd3k3fv3am7r"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_y8txq"]
+[ext_resource type="Texture2D" uid="uid://dfhbotrb8jrtg" path="res://Textures/Background/Backdrop/Forest.png" id="2_e5whs"]
 [ext_resource type="PackedScene" uid="uid://bq6vdxko1pocd" path="res://Scenes/Characters/Nico.tscn" id="2_fceyn"]
 [ext_resource type="PackedScene" uid="uid://cvtmfwuncvir" path="res://Scenes/Items/Lever.tscn" id="2_ftbke"]
 [ext_resource type="Texture2D" uid="uid://bpgpasr6a6nuk" path="res://Textures/Tilesets/Fantasy/Forest/Forest_05.png" id="2_r300q"]
@@ -18,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://w82wedteaukm" path="res://Scenes/Triggers/Trigger_Vine.tscn" id="9_8coux"]
 [ext_resource type="PackedScene" uid="uid://bbrv5075pfot" path="res://Scenes/Characters/Enemy_Slug.tscn" id="15_ybike"]
 [ext_resource type="PackedScene" uid="uid://dnm01uiryd50j" path="res://Scenes/Characters/Enemy_Spider.tscn" id="16_exer3"]
-[ext_resource type="Script" path="res://Scripts/Enemy_Tasks.gd" id="17_7v8h5"]
 
 [sub_resource type="Curve2D" id="Curve2D_mqm5t"]
 _data = {
@@ -40,6 +40,14 @@ sources/5 = SubResource("TileSetAtlasSource_enwph")
 script = ExtResource("1_y8txq")
 
 [node name="Backdrop" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Backdrop"]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Backdrop/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_e5whs")
 
 [node name="TileMap_Background" type="TileMap" parent="."]
 format = 2
@@ -140,7 +148,6 @@ tasks_list = [{
 
 [node name="Enemy_Spider1" parent="Enemies" instance=ExtResource("16_exer3")]
 position = Vector2(1831, -490)
-script = ExtResource("17_7v8h5")
 enemy_dict = {
 "IsLoop": true,
 "TaskIdx": 0,

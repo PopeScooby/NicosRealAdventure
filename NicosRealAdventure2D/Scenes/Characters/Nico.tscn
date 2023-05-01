@@ -1,18 +1,29 @@
-[gd_scene load_steps=41 format=3 uid="uid://bq6vdxko1pocd"]
+[gd_scene load_steps=52 format=3 uid="uid://bq6vdxko1pocd"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_leivy"]
-[ext_resource type="Texture2D" uid="uid://u67i40cjlth4" path="res://Textures/Characters/Nico/Idle/Idle_00.png" id="2_vyni2"]
+[ext_resource type="Texture2D" uid="uid://jdiyoyho81vf" path="res://Textures/Characters/Nico/Idle/Idle_00.png" id="2_vyni2"]
 [ext_resource type="Texture2D" uid="uid://cwm20yjnv2gq5" path="res://Textures/Characters/Nico/Run/Run_00.png" id="3_801xl"]
 [ext_resource type="Texture2D" uid="uid://bo6rq60je6xlw" path="res://Textures/Characters/Nico/Run/Run_01.png" id="4_thiqp"]
+[ext_resource type="Texture2D" uid="uid://c5kcjbw8rra0g" path="res://Textures/Characters/Nico/Idle/Idle_01.png" id="4_vm0o8"]
 [ext_resource type="Texture2D" uid="uid://dts3xd484fidh" path="res://Textures/Characters/Nico/Run/Run_02.png" id="5_6dd4u"]
+[ext_resource type="Texture2D" uid="uid://bgimn0txmfg6p" path="res://Textures/Characters/Nico/Idle/Idle_02.png" id="5_7gjki"]
+[ext_resource type="Texture2D" uid="uid://dyqf36l1ig1ao" path="res://Textures/Characters/Nico/Idle/Idle_03.png" id="6_3f1ck"]
 [ext_resource type="Texture2D" uid="uid://coguyj40rojmt" path="res://Textures/Characters/Nico/Run/Run_03.png" id="6_ljax8"]
+[ext_resource type="Texture2D" uid="uid://bwrgwmwcq8i6o" path="res://Textures/Characters/Nico/Idle/Idle_04.png" id="7_esa4p"]
 [ext_resource type="Texture2D" uid="uid://cmg0fmuyn370o" path="res://Textures/Characters/Nico/Run/Run_04.png" id="7_pkc2j"]
 [ext_resource type="Texture2D" uid="uid://dlnxjcn7jgi5k" path="res://Textures/Characters/Nico/Run/Run_05.png" id="8_1j08f"]
+[ext_resource type="Texture2D" uid="uid://bvtliukjkk0cl" path="res://Textures/Characters/Nico/Idle/Idle_05.png" id="8_5j5hu"]
+[ext_resource type="Texture2D" uid="uid://br6wrylb5bji3" path="res://Textures/Characters/Nico/Idle/Idle_06.png" id="9_hlhh1"]
 [ext_resource type="Texture2D" uid="uid://d0c50845oijwj" path="res://Textures/Characters/Nico/Run/Run_06.png" id="9_xt4c0"]
 [ext_resource type="Texture2D" uid="uid://bvxxhw2471a6r" path="res://Textures/Characters/Nico/Run/Run_07.png" id="10_58ovj"]
+[ext_resource type="Texture2D" uid="uid://c5sp1heq61okv" path="res://Textures/Characters/Nico/Idle/Idle_07.png" id="10_cxaxp"]
 [ext_resource type="Texture2D" uid="uid://bj4evbgxbqt7" path="res://Textures/Characters/Nico/Run/Run_08.png" id="11_e2ypf"]
+[ext_resource type="Texture2D" uid="uid://dfprt1obs2061" path="res://Textures/Characters/Nico/Idle/Idle_08.png" id="11_kn041"]
 [ext_resource type="Texture2D" uid="uid://c1gpja44jdq82" path="res://Textures/Characters/Nico/Run/Run_09.png" id="12_kmte7"]
+[ext_resource type="Texture2D" uid="uid://okb5munnri1h" path="res://Textures/Characters/Nico/Idle/Idle_09.png" id="12_m3p1w"]
 [ext_resource type="Texture2D" uid="uid://wgwsqtj0i50r" path="res://Textures/Characters/Nico/Jump/Jump_02.png" id="13_q62qd"]
+[ext_resource type="Texture2D" uid="uid://dmtnlssa3dso6" path="res://Textures/Characters/Nico/Idle/Idle_10.png" id="13_qxro5"]
+[ext_resource type="Texture2D" uid="uid://d3sdjxgd3acfh" path="res://Textures/Characters/Nico/Idle/Idle_11.png" id="14_dxwyf"]
 [ext_resource type="Texture2D" uid="uid://berpu6s61vkxd" path="res://Textures/Characters/Nico/Jump/Jump_09.png" id="14_f6yf2"]
 [ext_resource type="Texture2D" uid="uid://dgludy1ka8blx" path="res://Textures/Characters/Nico/Push/Push_00.png" id="15_1fl5w"]
 [ext_resource type="Texture2D" uid="uid://cghhn1lnovjcu" path="res://Textures/Characters/Nico/Push/Push_01.png" id="16_oskut"]
@@ -208,6 +219,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_fpq13"]
 resource_name = "Nico_Idle"
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -216,10 +228,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2")]
+"values": [ExtResource("2_vyni2"), ExtResource("4_vm0o8"), ExtResource("5_7gjki"), ExtResource("6_3f1ck"), ExtResource("7_esa4p"), ExtResource("8_5j5hu"), ExtResource("9_hlhh1"), ExtResource("10_cxaxp"), ExtResource("11_kn041"), ExtResource("12_m3p1w"), ExtResource("13_qxro5"), ExtResource("14_dxwyf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -308,6 +320,93 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_vyni2"), ExtResource("15_1fl5w"), ExtResource("2_vyni2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_du0qn"]
+resource_name = "Nico_Jetpack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -837,93 +936,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_vyni2")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite2D:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_du0qn"]
-resource_name = "Nico_Jetpack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2"), ExtResource("2_vyni2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

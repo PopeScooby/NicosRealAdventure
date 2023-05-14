@@ -31,6 +31,7 @@ extends Node2D
 var level_num
 
 func _ready():
+	
 	level_setup()
 
 func _process(delta):
@@ -41,13 +42,21 @@ func level_setup():
 
 	level_num = int(self.name.replace("Level_", ""))
 	Global.Level = Global.Player["Levels"][str(level_num)]
-
+	
+	level_setup_camera_limit()
 #	level_setup_timer()
 	level_setup_coins()
 	level_setup_chests()
 #	level_setup_gems()
 	GlobalDictionaries.load_current_data()
 #	level_setup_items()
+
+func level_setup_camera_limit():
+
+	$Player/Camera2D.limit_left = cam_left
+	$Player/Camera2D.limit_right = cam_right
+	$Player/Camera2D.limit_top = cam_top
+	$Player/Camera2D.limit_bottom = cam_bottom
 
 func level_setup_coins():
 

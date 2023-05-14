@@ -38,7 +38,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xodwf"]
 radius = 58.0
-height = 444.0
+height = 424.0
 
 [sub_resource type="Animation" id="Animation_mnsbt"]
 resource_name = "Nico_Die"
@@ -1063,7 +1063,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
 collision_mask = 6
 script = ExtResource("1_leivy")
 

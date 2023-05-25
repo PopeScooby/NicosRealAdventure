@@ -78,27 +78,31 @@ func get_level_dict():
 func get_scenes_dict():
 	return{
 		"Scene_Curr":{ "SceneName": ""},
-		"Homebase_Intro_01": {"Seen": false, "Next": "Homebase_Intro_02", "Parent":"Homebase"},
-		"Homebase_Intro_02": {"Seen": false, "Next": "Homebase_Intro_03", "Parent":"Homebase"},
-		"Homebase_Intro_03": {"Seen": false, "Next": "Homebase_Intro_04", "Parent":"Homebase"},
-		"Homebase_Intro_04": {"Seen": false, "Next": "Homebase_Intro_05", "Parent":"Homebase"},
-		"Homebase_Intro_05": {"Seen": false, "Next": "Homebase_Intro_06", "Parent":"Homebase"},
-		"Homebase_Intro_06": {"Seen": false, "Next": "Homebase_Intro_07", "Parent":"Homebase"},
-		"Homebase_Intro_07": {"Seen": false, "Next": "Homebase_Intro_08", "Parent":"Homebase"},
-		"Homebase_Intro_08": {"Seen": false, "Next": "", "Parent":"Homebase"},
-		"Homebase_Intro_09": {"Seen": false, "Next": "Homebase_Intro_10", "Parent":"Homebase"},
-		"Homebase_Intro_10": {"Seen": false, "Next": "", "Parent":"Homebase"},
-		"Level_01_Enter": {"Seen": false, "Next": "Level_01_Radio_01", "Parent":"Adventurer"},
-		"Level_01_Radio_01": {"Seen": false, "Next": "Level_01_Radio_02", "Parent":"GameplayInterface"},
-		"Level_01_Radio_02": {"Seen": false, "Next": "", "Parent":"GameplayInterface"},
-		"Level_01_2": {"Seen": false, "Next": "", "Parent":"Adventurer"},
-		"Level_02_Enter_01": {"Seen": false, "Next": "Level_02_Enter_02", "Parent":"Adventurer"},
-		"Level_02_Enter_02": {"Seen": false, "Next": "Level_02_Enter_03", "Parent":"Adventurer"},
-		"Level_02_Enter_03": {"Seen": false, "Next": "Level_02_Enter_04", "Parent":"GameplayInterface"},
-		"Level_02_Enter_04": {"Seen": false, "Next": "", "Parent":"GameplayInterface"},
-		"Level_05_HospitalFound": {"Seen": false, "Next": "", "Parent":"Adventurer"},
-		"Level_07_MushRoomFound": {"Seen": false, "Next": "", "Parent":"Adventurer"}
+		"Level_01_Enter": {"Seen": false, "Next": "Homebase_Intro_02", "Parent":"Homebase"},
 	}
+#	return{
+#		"Scene_Curr":{ "SceneName": ""},
+#		"Homebase_Intro_01": {"Seen": false, "Next": "Homebase_Intro_02", "Parent":"Homebase"},
+#		"Homebase_Intro_02": {"Seen": false, "Next": "Homebase_Intro_03", "Parent":"Homebase"},
+#		"Homebase_Intro_03": {"Seen": false, "Next": "Homebase_Intro_04", "Parent":"Homebase"},
+#		"Homebase_Intro_04": {"Seen": false, "Next": "Homebase_Intro_05", "Parent":"Homebase"},
+#		"Homebase_Intro_05": {"Seen": false, "Next": "Homebase_Intro_06", "Parent":"Homebase"},
+#		"Homebase_Intro_06": {"Seen": false, "Next": "Homebase_Intro_07", "Parent":"Homebase"},
+#		"Homebase_Intro_07": {"Seen": false, "Next": "Homebase_Intro_08", "Parent":"Homebase"},
+#		"Homebase_Intro_08": {"Seen": false, "Next": "", "Parent":"Homebase"},
+#		"Homebase_Intro_09": {"Seen": false, "Next": "Homebase_Intro_10", "Parent":"Homebase"},
+#		"Homebase_Intro_10": {"Seen": false, "Next": "", "Parent":"Homebase"},
+#		"Level_01_Enter": {"Seen": false, "Next": "Level_01_Radio_01", "Parent":"Adventurer"},
+#		"Level_01_Radio_01": {"Seen": false, "Next": "Level_01_Radio_02", "Parent":"GameplayInterface"},
+#		"Level_01_Radio_02": {"Seen": false, "Next": "", "Parent":"GameplayInterface"},
+#		"Level_01_2": {"Seen": false, "Next": "", "Parent":"Adventurer"},
+#		"Level_02_Enter_01": {"Seen": false, "Next": "Level_02_Enter_02", "Parent":"Adventurer"},
+#		"Level_02_Enter_02": {"Seen": false, "Next": "Level_02_Enter_03", "Parent":"Adventurer"},
+#		"Level_02_Enter_03": {"Seen": false, "Next": "Level_02_Enter_04", "Parent":"GameplayInterface"},
+#		"Level_02_Enter_04": {"Seen": false, "Next": "", "Parent":"GameplayInterface"},
+#		"Level_05_HospitalFound": {"Seen": false, "Next": "", "Parent":"Adventurer"},
+#		"Level_07_MushRoomFound": {"Seen": false, "Next": "", "Parent":"Adventurer"}
+#	}
 
 func get_game_info_dict():
 	return{

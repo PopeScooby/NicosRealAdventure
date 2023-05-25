@@ -29,10 +29,16 @@ func check_state():
 		Global.STATE_PLAYER = "Dying"
 	elif Global.STATE_PLAYER == "InWater":
 		Global.STATE_PLAYER = "Dying"
+	elif Global.STATE_LEVEL == "Portal_Enter_Open":
+		Global.STATE_PLAYER = "Portal_Enter_Open"
+	elif Global.STATE_LEVEL == "Player_Spawn":
+		Global.STATE_PLAYER = "Player_Spawn"
 
 
 func exec_state(delta):
-	if Global.STATE_PLAYER == "Dying":
+	if Global.STATE_PLAYER == "Player_Spawn":
+		exec_state_spawn_player()
+	elif Global.STATE_PLAYER == "Dying":
 		exec_state_dying()
 	elif Global.STATE_PLAYER == "Bounce":
 		exec_state_bounce()
@@ -40,6 +46,12 @@ func exec_state(delta):
 		exec_state_move(delta)
 	elif Global.STATE_PLAYER == "Move_Normal" and GlobalDictionaries.current_data["Flags"]["On_Vines"] == true:
 		exec_state_move_vines(delta)
+
+func exec_state_spawn_player():
+	Global.STATE_LEVEL = "Player_Spawning"
+	Global.STATE_PLAYER = "Player_Spawning"
+	Global.Player["Animation"] = "Spawn"
+	self.set_animation()
 
 func exec_state_move(delta):
 	
@@ -190,7 +202,7 @@ func set_player():
 		GlobalDictionaries.game["PlayerKey"] = "1"
 		GlobalDictionaries.game["Level_Current"] = int(get_parent().name.replace("Level_",""))
 		Global.Player["Level_Max"] = int(get_parent().name.replace("Level_",""))
-		Global.STATE_PLAYER = "Move_Normal"
+#		Global.STATE_PLAYER = "Move_Normal"
 	else:
 		Global.Player = GlobalDictionaries.players[str(GlobalDictionaries.game["PlayerKey"])]
 
@@ -207,16 +219,17 @@ func set_animation():
 
 func set_camera():
 	
-	if Input.is_action_pressed("camera_right"):
-		$Camera2D.position += Vector2(15, 0)
-	if Input.is_action_pressed("camera_left"):
-		$Camera2D.position += Vector2(-15, 0)
-	if Input.is_action_pressed("camera_up"):
-		$Camera2D.position += Vector2(0, -15)
-	if Input.is_action_pressed("camera_down"):
-		$Camera2D.position += Vector2(0, 15)
-	if Input.is_action_pressed("camera_center"):
-		$Camera2D.position = Vector2(0, 0)
+	if Global.STATE_PLAYER == "Move_Normal":
+		if Input.is_action_pressed("camera_right"):
+			$Camera2D.position += Vector2(15, 0)
+		if Input.is_action_pressed("camera_left"):
+			$Camera2D.position += Vector2(-15, 0)
+		if Input.is_action_pressed("camera_up"):
+			$Camera2D.position += Vector2(0, -15)
+		if Input.is_action_pressed("camera_down"):
+			$Camera2D.position += Vector2(0, 15)
+		if Input.is_action_pressed("camera_center"):
+			$Camera2D.position = Vector2(0, 0)
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -225,6 +238,9 @@ func _on_animation_player_animation_finished(anim_name):
 		Global.STATE_PLAYER = "Move_Normal"
 	elif anim_name.find("_Die") != -1:
 		Global.STATE_PLAYER = "Dead"
+	elif anim_name.find("_Spawn") != -1:
+		Global.STATE_PLAYER = "Move_Normal"
+		Global.STATE_LEVEL = "Portal_Enter_Close"
 
 func _on_animation_player_2_animation_finished(anim_name):
 	pass # Replace with function body.

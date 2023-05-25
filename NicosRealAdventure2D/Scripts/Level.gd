@@ -2,7 +2,7 @@ extends Node2D
 #
 ## ------ State Descripitons ------ 
 #
-##Spawn_Portal: Starts Animation "Portal_Spawn" on Portal_Enter swithces STATE_LEVEL to Portal_Spawning
+##Spawn_Portal_Enter: Starts Animation "Portal_Spawn" on Portal_Enter swithces STATE_LEVEL to Portal_Spawning
 #
 ##Portal_Spawning: doesn't trigger anything allowing "Portal_Spawn" animation to finish
 #
@@ -42,7 +42,13 @@ func level_setup():
 
 	level_num = int(self.name.replace("Level_", ""))
 	Global.Level = Global.Player["Levels"][str(level_num)]
-	
+	if get_node("Background").has_node("Portal_Enter"):
+		$Player/AnimationPlayer.play("RESET")
+		Global.STATE_LEVEL = "Portal_Enter_Open"
+	else: 
+		Global.STATE_LEVEL = "Gameplay"
+		Global.STATE_PLAYER = "Move_Normal"
+		
 	level_setup_camera_limit()
 #	level_setup_timer()
 	level_setup_coins()

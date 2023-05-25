@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bq6vdxko1pocd"]
+[gd_scene load_steps=54 format=3 uid="uid://blrwi8qlkk086"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_leivy"]
 [ext_resource type="Texture2D" uid="uid://jdiyoyho81vf" path="res://Textures/Characters/Nico/Idle/Idle_00.png" id="2_vyni2"]
@@ -35,10 +35,11 @@
 [ext_resource type="Texture2D" uid="uid://dwnxbd3ecotdu" path="res://Textures/Characters/Nico/Push/Push_07.png" id="22_fmjx8"]
 [ext_resource type="Texture2D" uid="uid://cts62e8enlml0" path="res://Textures/Characters/Nico/Push/Push_08.png" id="23_1hrsy"]
 [ext_resource type="Texture2D" uid="uid://7c3ttiybbt1e" path="res://Textures/Characters/Nico/Push/Push_09.png" id="24_8gn00"]
+[ext_resource type="Texture2D" uid="uid://bvf05cr7a0utq" path="res://Textures/Characters/BigBoss_Wizard/Level_01_Enter/Wizard_Level01Enter_000.png" id="36_sylny"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xodwf"]
-radius = 58.0
-height = 424.0
+radius = 68.8889
+height = 328.889
 
 [sub_resource type="Animation" id="Animation_mnsbt"]
 resource_name = "Nico_Die"
@@ -1011,7 +1012,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_2glb5"]
-resource_name = "Nico_Spawn"
+resource_name = "Wizard_Spawn"
 length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1023,7 +1024,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_vyni2")]
+"values": [ExtResource("36_sylny")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1109,9 +1110,9 @@ _data = {
 "Nico_Pull": SubResource("Animation_cbb4u"),
 "Nico_Push": SubResource("Animation_gehbb"),
 "Nico_Run": SubResource("Animation_jrqni"),
-"Nico_Spawn": SubResource("Animation_2glb5"),
 "Nico_Vines": SubResource("Animation_cdsma"),
-"RESET": SubResource("Animation_3wa46")
+"RESET": SubResource("Animation_3wa46"),
+"Wizard_Spawn": SubResource("Animation_2glb5")
 }
 
 [sub_resource type="Animation" id="Animation_xj503"]
